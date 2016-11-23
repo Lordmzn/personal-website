@@ -8,7 +8,7 @@ addons:
 notifications:
   email: false
 
-deploy:
+script:
   - "lftp -u $FTP_USER,$FTP_PASS $FTP_SITE -e 'mirror -c -e -R src ~ ; exit'"
 
 env:
