@@ -1,10 +1,16 @@
 sudo: false
+
 addons:
   apt:
     packages:
     - lftp
-script: travis-build.sh
-os: linux
+
+notifications:
+  email: false
+
+deploy:
+  - "lftp -u $FTP_USER,$FTP_PASS $FTP_SITE -e 'mirror -c -e -R src ~ ; exit'"
+
 env:
   global:
   - secure: v5STFJD38wK7mAVxPnIPNxZHMBDzGQ6Q9Eg1cmkoMRvQ4CCA41PFnZnkU9erwoU+cfHwBp0tW16LGweiDGCK6kSu+cagC20Ou45Hn761NePMLpYflH6xLTkiAuL/zu/kO9ZFfnVMKYIX53QrRtRw723gxMU26DNLLH4k4XWPLHoa4F7UJEZo7r8OE28289KdEaXeTnmSR8DuZxnjdsiTbMGGTJM3c5VGLXn/m20rfI7NT47dykotcqRsdwE2eG1kyaa74ABa/8VaeURibvc5UQbr1Q85wD7EhRy2F5iN6fSCzXIfZDX6DIGTdhTOgg/dVcjRfG08/ckA2l66fVu7IwpX0P45+Ff+cmg8MOGvclC8DH6QMDmK0MX2lQJlAKJxvKk9DTxo/daF81gVKf9FNHciCByyamGObpAF7bQsnZQ1WrfKnBuHfQdRf9VJfBtc88rKNeYr2ThtkUGRiZiXeWD2BDTpH9FizK1z0sPEvRYZJ+76f2qq8+QKbb2KJuw6OLLFagdH2w/QaXm44fcBO6/BihIXtLBOUXoHhTPwk+AXfmp49fTpP5nJzt9WyCm699vqLvpduT/BTfyYfMIyTwQb0BvzwQhMXYUKcdBZwjH6u8UQ9yi1s7waKnq/5nSzZZY+OBJDQXWjMox0sTxMWjRp2DtUbGJFfb5sAD0nqPI=
