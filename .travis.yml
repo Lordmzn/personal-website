@@ -9,6 +9,9 @@ notifications:
   email: false
 
 script:
+  - "echo $FTP_USER"
+  - "echo $FTP_PASS"
+  - "echo $FTP_SITE"
   - "lftp -u $FTP_USER,$FTP_PASS $FTP_SITE -e 'mirror -c -e -R src ~ ; exit'"
 
 env:
