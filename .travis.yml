@@ -5,11 +5,7 @@ addons:
     - lftp
 notifications:
   email: false
-script:
-- echo $FTP_USER
-- echo $FTP_PASS
-- echo $FTP_SITE
-- lftp -u $FTP_USER,$FTP_PASS $FTP_SITE -e 'mirror -c -e -R src ~ ; exit'
+script: travis-build.sh
 env:
   global:
   - secure: gFc5Z0bKJOWytCeR2q3b92SOQ9AW2oTZBVxCMkDudVG2zYrKeQN8k6QLltqaH8L7Q83QLLN2LkDqZpoS+Q1cd4SYhrk1QSL91Pm1LAAEn/D0pqj0rqoJjMQVslyeRJlr/Se0+QMVIATx8698VucNB4F/HuIl2HLPAk+pgBc1nDsLrx5doeSDOBvh1D2oxkuRmHbc6C5PybUwdjNK4qIN+dTz5kG4VGHFnG5LzVi6fOo4t+OBFmXJXXwWXEYRwm8C9PtCXdiIgeEP1ndHcupxRYuwmePIPNjAH8HjXcGbsCjX0V6RgGHHBxmfliwevn4vmxIzxDdxWJYL0hiArJ4ojBom9xryv0fcnLxkGjOi/Ib9oBuB71BpBQNQkVPImUH1bL2BlkgGn3bXPaIMpyOoIvRqzGzxeDpiA7MpDYp2R+D9iUj+oqUF1sKfLCVQChrnCRjuNwLQ+a580H3/4vKkbkJ1xT4IiL3ShXBSSyS2qNN/AqCSx00/0w1+p2hcqKsP6qpbazXmNXVAoB8M8elm059aXXSdUoJ8OWtiUyc3zjUUdLQsyV+5xZ9/Q7nnfEbb8FHolWsa6B+1BEVWCF/esV18/kJzhSAOW+3WyhCkRB6PaNZ56MXRYHYUz2IIDTYZ/4opE4Yxuvdoskan51CwmeFdnw0sq9sWJdzf+Qfp+8s=
