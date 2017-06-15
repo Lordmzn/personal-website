@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Personal website and curriculum vitae">
+		<meta name="keywords" content="Emanuele,Mason,PhD,biography,curriculum,cv,engineering,research">
+		<meta name="author" content="Emanuele Mason">
+    <link rel="icon" href="favicon.ico">
+
+		<title>Emanuele Mason - PhD student</title>
+
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+    <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> <!-- why another bootstrap?? -->
+    <link rel="stylesheet" type="text/css" href="css/secretaire.css">
+
+		<bibtex src="myBib.bib"></bibtex>
+	</head>
+
+	<body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">Logo</a>
+          <p class="navbar-text">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#portfolio" class="text-"><i class="fa fa-lightbulb-o"></i>&nbsp;RESearch</a></li>
+            <li><a href="#resume"><i class="fa fa-leaf"></i>&nbsp;BIOgraphy</a></li>
+            <li><a href="#publications"><i class="fa fa-beer"></i>&nbsp;PUBlications</a></li>
+						<li><a href="#library"><i class="fa fa-university"></i>&nbsp;LIBrary</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <!-- Begin page content -->
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-xs-8 media">
+          <div class="media-left">
+            <img class="media-object img-responsive img-thumbnail" src="img/my-photo.png" alt="Picture of Emanuele Mason">
+          </div>
+          <div class="media-body">
+            <h1 class="media-heading">Emanuele Mason<br><small>PhD student in Information Technology</small></h1>
+            <p class="lead">The Sage is occupied with the unspoken and acts without effort. Teaching without verbosity, producing without possessing, creating without regard to result, claiming nothing, the Sage has nothing to lose.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-xs-3 col-md-offset-1 text-right">
+          <h3>Keywords</h3>
+          <ul class="list-unstyled small">
+            <li>Natural resource management&nbsp;<i class="fa fa-check-square"></i></li>
+            <li>Behavioral modeling&nbsp;<i class="fa fa-check-square"></i></li>
+            <li>Riverscape evolution modeling&nbsp;<i class="fa fa-check-square"></i></li>
+            <li>Multi objective&nbsp;<i class="fa fa-check-square"></i></li>
+            <li>Systems analysis&nbsp;<i class="fa fa-check-square"></i></li>
+            <li>Machine learning&nbsp;<i class="fa fa-check-square"></i></li>
+            <li>Genetic algorithms&nbsp;<i class="fa fa-check-square"></i></li>
+          </ul>
+        </div>
+      </div>
+
+    </div> <!-- jumbotron like thing -->
+
+    <section class="container-fluid main-content">
+
+      <!-- <div id="my-projects-location"></div> : dropped, too complicate for me now -->
+
+      <div id="portfolio" class="grid main-content-item show">
+
+        <div class="grid-sizer"></div>
+        <div class="gutter-sizer"></div>
+
+        <div class="portfolio-item grid-item">
+          <div class="portfolio-details">
+            <h4 class="text-uppercase">DMMT for EMODPS</h4>
+            <img src="img/prjcts/DMMT_logo.png" alt="DMMT logo" class="img-responsive">
+            <p>
+              Program to code equations of dynamic models and simulate them in a very fast way. Python and C++.
+            </p>
+            <p class="portfolio-links">
+							<a href="https://github.com/Lordmzn/pydmmt" target="_blank">
+								<i class="fa fa-github" aria-hidden="true"></i>&nbsp;PyDMMT
+							</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="portfolio-item grid-item grid-item--width2">
+          <div class="portfolio-details">
+            <h4 class="text-uppercase">MORE</h4>
+            <p>
+              Multi Objective Riverscape Evolution. A study of optimality in river erosional process. Since my master thesis.
+            </p>
+            <img src="img/prjcts/ORN.jpeg" alt="Optimal river networks project" class="img-responsive">
+            <p class="portfolio-links">
+              <a href="https://www.politesi.polimi.it/handle/10589/77182" target="_blank">
+                <i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;Thesis&nbsp;|&nbsp;
+              </a>
+              <a href="https://www.politesi.polimi.it/bitstream/10589/77182/3/2013_04_Cominola_Mason.pdf" target="_blank">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;.pdf
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="portfolio-item grid-item">
+          <div class="portfolio-details">
+            <h4 class="text-uppercase">IMRR</h4>
+            <p>
+              The IMRR project aims at developing and promoting strategies for the sustainable management of the Red-Thai Binh Rivers System in Vietnam through coordinated decision-making and negotiation, supported by modelling and optimization tools and through capacity building of local authorities in the water sector.
+            </p>
+            <img src="img/prjcts/IMRR.png" alt="loghi IMRR" class="img-responsive">
+            <p>
+              - Multi reservoir policy design<br>
+              - Capacity building<br>
+              - Knowledge transfer<br>
+            </p>
+            <p>
+
+            </p>
+            <p class="portfolio-links">
+              <a href="http://xake.elet.polimi.it/imrr" target="_blank">
+                <i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;Site&nbsp;|&nbsp;
+              </a>
+              <a href="http://xake.elet.polimi.it/IMRR_Reports/D7.1Report.pdf" target="_blank">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;.pdf
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="portfolio-item grid-item">
+          <div class="portfolio-details">
+            <img src="img/prjcts/IHA_schema.png" alt="IHA" class="img-responsive">
+            <h4 class="text-uppercase">Eco IHA</h4>
+            <p>
+              Define indicators of hydrological alterations that threaten ecosystems sustainability in a way that they can be used in policy design frameworks.
+            </p>
+            <p class="portfolio-links">
+              <a href="http://baobab.elet.polimi.it/TwoLeWeb/services/TwoLeWiki/images/e/ea/Elaborato_IHA.pdf" target="_blank">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;.pdf (ITA)&nbsp;|&nbsp;
+              </a>
+              <a href="https://www.researchgate.net/publication/256756866_Valuing_hydrological_alteration_in_multi-objective_water_resources_management" target="_blank">
+                <i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;Paper
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="portfolio-item grid-item grid-item--width2">
+          <div class="portfolio-details">
+            <img src="img/prjcts/ims-scheduling.png" alt="ims-scheduling" class="img-responsive">
+            <h4 class="text-uppercase">ims-scheduling</h4>
+            <p>
+              Class exercises on distributed constraint optimization. Teacher: F. Amigoni.
+            </p>
+            <p>
+              - Contains an original ADOPT implementation <a href="http://dx.doi.org/10.1016/j.artint.2004.09.003" target="_blank"><span class="fa fa-file-text-o fa-lg"></span> get the article!</a><br>
+              - Is built over the awesome JADE framework: <a href="http://jade.tilab.com" target="_blank">get JADE!</a><br>
+              - Provides basic graphic interface for usage<br>
+              - More information can be found in the presentation included!
+            </p>
+            <p class="portfolio-links">
+              <a href="https://github.com/andredami/ims-scheduling" target="_blank">
+                <i class="fa fa-github" aria-hidden="true"></i>&nbsp;GitHub
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="portfolio-item grid-item">
+          <img src="img/prjcts/www.cnai.info.png" alt="The CNAI website" class="img-responsive">
+          <div class="portfolio-details">
+            <h4 class="text-uppercase">CNAI website</h4>
+            <p>
+              Joomla! website for a national corporation of nurses named Consociazione Nazionale Associazione Infermieri.
+            </p>
+            <p>
+              - Design and setup<br>
+              - Training of their staff<br>
+              - Bug fixing
+            </p>
+            <p class="portfolio-links">
+              <a href="http://www.cnai.info" target="_blank">
+                <i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;Site
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="portfolio-item grid-item">
+          <div class="portfolio-details">
+            <h4 class="text-uppercase">Classic thesis @ DEIB</h4>
+            <p>
+              This is a latex template ready to be used when writing thesis at Politecnico di Milano IT department.
+            </p>
+            <p>
+              It is a modified version of Classic Thesis by Andrè Miede that can be found <a href="http://code.google.com/p/classicthesis/" target="_blank">here</a>.
+            </p>
+            <img src="img/prjcts/ClassicThesisDEIB.png" alt="Classic thesis template for DEIB." class="img-responsive">
+            <p class="portfolio-links">
+              <a href="http://lordmzn.github.io/ClassicThesis-at-DEIB/" target="_blank">
+                <i class="fa fa-github" aria-hidden="true"></i>&nbsp;Site&nbsp;|&nbsp;
+              </a>
+              <a href="https://github.com/Lordmzn/ClassicThesis-at-DEIB/zipball/v0.0.1" target="_blank">
+								<i class="fa fa-download" aria-hidden="true"></i>&nbsp;.zip
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="portfolio-item grid-item">
+          <img src="img/prjcts/www.gdbustese.it.png" alt="The GD Bustese website" class="img-responsive">
+          <div class="portfolio-details">
+            <h4 class="text-uppercase">GD del bustese</h4>
+            <p>
+              Youth arm of the Democratic Party of Busto Arsizio, VA.
+            </p>
+            <p>
+              Bootstrap based website, with heavy customization designed to meet the organization' specific needs.
+            </p>
+            <p class="portfolio-links">
+              <a href="http://www.lordmzn.it/old_gdbustese.it" target="_blank">
+                <i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;Site
+              </a>
+            </p>
+          </div>
+        </div>
+        <!--
+        <div class="portfolio-item col-xs-3 col-md-2">
+          <div class="portfolio-details">
+            <h4 class="text-uppercase">SOS Olona</h4>
+            <p>
+              Simple Wordpress blog to keep track of environmental restoration progress on the river I was born next to.
+            </p>
+            <img src="img/prjcts/www.SOSolona.it.png" alt="The SOS Olona website" class="img-responsive">
+            <p class="portfolio-links">
+              <a href="http://www.sosolona.it" target="_blank">
+                <i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;Site
+              </a>
+            </p>
+          </div>
+        </div>
+        -->
+
+      </div><!-- end of portfolio -->
+
+      <!-- 2 - BIO biography -->
+      <div id="resume" class="row main-content-item hidden">
+
+        <!-- column 1 -->
+        <div class="col-md-4 col-xs-12">
+          <h4>Education</h4>
+          <h5>Ph.D in Information Technology</h5>
+          <p>Politecnico di Milano, Italy 2014 - 2017</p>
+          <h5>M.Sc. in Environmental Engineering</h5>
+          <p>Politecnico di Milano, Italy 2010 - 2013</p>
+          <h5>B.Sc. in Environmental Engineering</h5>
+          <p>Politecnico di Milano, Italy 2007 - 2010</p>
+
+          <h4>Employment</h4>
+          <h5>Research fellow</h5>
+          <p>Politecnico di Milano Oct 2013 - Sep 2014</p>
+          <p>Modeling Red River - Thai basin in Vietnam to design operational policies of Hoa Binh, Son La and Tuyen Quang reservoirs to ensure hydroelectric production and flood defense at Hanoi.</p>
+
+          <h4>International experiences</h4>
+          <h5>Visiting scholar</h5>
+          <p>PennState University Oct-Nov 2012</p>
+          <p>Visiting scholar at prof. P. Reed research group to learn the <a href="http://www.moeaframework.org/" target="_blank">software</a> they created and to develop my master thesis.</p>
+
+        </div>
+
+        <!-- column 2 -->
+        <div class="col-md-4 col-xs-12">
+
+          <h4>Research Areas</h4>
+          <ul class="list-unstyled">
+            <li>I worked on designing <strong>operations of multipurposes water reservoirs</strong> using multi objective genetic algorithms and dynamic systems.</li>
+            <li>I have coworked on the creation of a <strong>riverscape evolution model</strong> based on optimality principle for the explanation and prediction of basin scale landscape evolution.</li>
+            <li>I have studied indicators to define the <strong>alteration of an hydrologic regime</strong> so to provide an assessment of impacts of reservoirs operation on downstream ecological units.</li>
+          </ul>
+
+          <h4>Languages Knowledge</h4>
+          <div class="row">
+            <div class="col-xs-7">Italian</div>
+            <div class="col-xs-4 text-right">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7">English</div>
+            <div class="col-xs-4 text-right">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7">French</div>
+            <div class="col-xs-4 text-right">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <h4>Programming Skills</h4>
+          <div class="row">
+            <div class="col-xs-7">Python</div>
+            <div class="col-xs-4 text-right">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7">Matlab</div>
+            <div class="col-xs-4 text-right">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7">Bash</div>
+            <div class="col-xs-4 text-right">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7">C &amp; C++</div>
+            <div class="col-xs-4 text-right">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7">Java</div>
+            <div class="col-xs-4 text-right">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7">HTML5 &amp; CSS3 &amp; Javascript</div>
+            <div class="col-xs-4 text-right">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7">Bootstrap &amp; jQuery &amp; AngularJS</div>
+            <div class="col-xs-4 text-right">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-7">Wordpress &amp; Joomla!</div>
+            <div class="col-xs-4 text-right">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+
+        <!--column 3 -->
+        <div class="col-md-4 col-xs-12">
+
+          <h4>Personal Information</h4>
+          <div class="row">
+            <div class="col-xs-6">Birthday</div>
+            <div class="col-xs-6 text-right">July 9, 1988</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">Free time</div>
+            <div class="col-xs-6 text-right">Tai Chi, Shaolin, Hiking, Local politics</div>
+          </div>
+
+          <h4>Contact Me</h4>
+          <div class="row">
+            <div class="col-xs-6"><i class="fa fa-phone fa-lg" aria-hidden="true"></i>&nbsp;Phone</div>
+            <div class="col-xs-6 text-right"><a href="tel:0223999041">02 2399 9041</a></div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6"><i class="fa fa-skype fa-lg" aria-hidden="true"></i>&nbsp;Skype</div>
+            <div class="col-xs-6 text-right"><a href="skype:lordmzn">Lordmzn</a></div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>&nbsp;Email</div>
+            <div class="col-xs-6 text-right"><a href="mailto:emanuele.mason@polimi.it">emanuele.mason@polimi.it</a></div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>&nbsp;Address</div>
+            <div class="col-xs-6 text-right"><address>via Golgi, 39<br>Milano, MI 20133</address></div>
+          </div>
+
+          <!-- google map container -->
+          <div id="my-location"></div>
+
+          <h4>Follow Me</h4>
+          <span><a href="http://www.linkedin.com/pub/emanuele-mason/2a/211/a18" target="_blank"><i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></a></span>
+          <span>::</span>
+          <span><a href="http://www.researchgate.net/profile/Emanuele_Mason" target="_blank"><img src="img/sites/researchGate_alt.png" alt="research gate icon" /></a></span>
+          <span>::</span>
+					<span><a href="https://polimi.academia.edu/EmanueleMason" target="_blank"><img src="img/sites/academia.png" alt="academia.edu icon"  width="20px" height="20px"/></a></span>
+          <span>::</span>
+          <span><a href="http://twitter.com/LordMzn" target="_blank"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></span>
+          <span>::</span>
+          <span><a href="http://github.com/Lordmzn" target="_blank"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></span>
+          <span>::</span>
+          <span><a href="http://plus.google.com/u/0/+EmanueleMason" target="_blank"><i class="fa fa-google-plus fa-lg" aria-hidden="true"></i></a></span>
+          <span>::</span>
+          <span><a href="http://www.facebook.com/LordMzn" target="_blank"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a></span>
+
+          <br>
+
+          <span><a href="http://www.deib.polimi.it/personale/dettagliop.php?idlang=ita&amp;id_persona=647162" target="_blank">me</a></span>
+          <span>></span>
+          <span><a href="http://www.nrm.deib.polimi.it" target="_blank">nrm</a></span>
+          <span>></span>
+          <span><a href="http://www.deib.polimi.it/ricerca/sezioni/gruppi/dettaglio.php?idlang=ita&amp;id_sezione=&amp;id_settore=125" target="_blank">env</a></span>
+          <span>></span>
+          <span><a href="http://www.deib.polimi.it/" target="_blank">deib</a></span>
+          <span>></span>
+          <span><a href="http://www.polimi.it/" target="_blank">polimi</a></span>
+
+          <!--
+          <h3 class="my-caption">Usefull websites</h3>
+          <span><a href="http://waterprogramming.wordpress.com/" target="_blank"><img class="my-website-icon" src="img/sites/waterprogramming.jpg" alt="Waterprogramming blog"/> Water Programming</a></span>
+          -->
+
+        </div><!-- end of column 3 -->
+
+      </div><!-- end of resume -->
+
+      <!-- 3 - publications
+      ================================================== -->
+      <div id="publications" class="row main-content-item hidden">
+
+				<div class="col-md-6 col-xs-12">
+					<h3 class="my-caption">My Publications</h3>
+					<a name="top"></a>
+
+			    <!-- le searchbar -->
+			    <form class="form-inline">
+						<div class="form-group searchbar">
+			    		<button type="button" class="btn btn-default" onclick="reset()">Reset</button>
+							<select id="authorselect" class="form-control bibtex_search bibtex_author" search="author">
+						    <option value="">Search Author</option>
+						  </select>
+			    		<!-- <select id="typeselect" class="form-control bibtex_search bibtex_type" search="+BIBTEXTYPE+">
+			          <option value="">Search per Type</option>
+			        </select> -->
+			    	</div>
+			    </form>
+
+					<h3 class="my-caption">Showcase</h3>
+					<div class="panel panel-default">
+						<div class="panel-body embed-responsive embed-responsive-4by3">
+								<iframe class="embed-responsive-item" src="http://www.nrm.deib.polimi.it/?p=1720"></iframe>
+								<!-- preview <iframe class="thumbnail" src="http://dx.doi.org/10.1061/(ASCE)WR.1943-5452.0000570"></iframe>
+								 -->
+					  </div>
+					</div>
+			  </div>
+
+		    <div class="bibtex_structure">
+		      <div class="group year" extra="ASC number">
+		      	  <a class="top_page" href="#top"><em>(Top of the page)</em></a>
+		      	  <div class="sort journal" extra="DESC string">
+		          	<div class="templates"></div>
+		          </div>
+		      </div>
+		    </div>
+
+		    <div id="bibtex_display" class="col-md-6 col-xs-12">
+
+		      <div class="if bibtex_template">
+		        <ul class="list-unstyled"><li>
+		          <span class="if journal doi">
+		            <a class="bibtexVar" href="http://dx.doi.org/+BIBTEXDOI+" extra="BIBTEXDOI">
+		              <span class="title"></span>,
+		            </a>
+		          </span>
+		          <span class="if title">
+								<a class="bibtexVar" href="resources/papers/+BIBTEXKEY+.pdf" extra="BIBTEXKEY">
+		              <span class="title"></span>,
+		            </a>
+		          </span>
+		          <div class="if author">
+		            <span class="author"></span>
+		          </div>
+		          <div>
+		            <span class="if journal"><em><span class="journal"></span></em>,</span>
+		            <span class="if booktitle">In <em><span class="booktitle"></span></em>,</span>
+		            <span class="if editor"><span class="editor"></span> (editors),</span>
+		            <span class="if publisher"><em><span class="publisher"></span></em>,</span>
+		            <span class="if !journal number">Technical report <span class="number"></span>,</span>
+		            <span class="if institution"><span class="institution"></span>,</span>
+		            <span class="if address"><span class="address"></span>,</span>
+		            <span class="if volume"><span class="volume"></span>,</span>
+		            <span class="if journal number">(<span class="number"></span>),</span>
+		            <span class="if pages"> pages <span class="pages"></span>,</span>
+		            <span class="if month"><span class="month"></span>,</span>
+		            <span class="if year"><span class="year"></span>.</span>
+		            <span class="if note"><span class="note"></span>.</span>
+		            <a class="bibtexVar" role="button" data-toggle="collapse" href="#bib+BIBTEXKEY+" aria-expanded="false" aria-controls="bib+BIBTEXKEY+" extra="BIBTEXKEY">
+		    		      [bib]
+		    		    </a>
+		          </div>
+		          <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
+		    		  <div class="well">
+		    		    <pre><span class="bibtexraw noread"></span></pre>
+		    		  </div>
+		    	  </div>
+		    	  <div style="display:none"><span class="bibtextype"></span></div>
+		        </li></ul>
+		      </div>
+
+		    </div>
+
+      </div><!-- end of publications-tab -->
+
+			<!-- 4 - library
+      ================================================== -->
+      <div id="library" class="row main-content-item hidden">
+
+				<!--column  -->
+				<iframe class="col-md-12 col-xs-12" src="http://bibbase.org/show?bib=http://bibbase.org/zotero/LordMzn"></iframe>
+					<!-- <script src="http://bibbase.org/show?bib=http://bibbase.org/zotero/LordMzn&jsonp=1&msg=embed"></script> -->
+
+			</div>
+
+
+    </section>
+
+    <footer class="footer">
+      <div class="container-fluid">
+        <p class="col-xs-8 text-muted">&copy; Emanuele Mason, 2016. <a href="https://github.com/Lordmzn/personal-website" target="_blank">Fork me</a> on github.<br>Made with <i class="fa fa-heart"></i> and some sweat &amp; tears too.</p>
+        <div class="col-xs-4 well well-sm row">
+          <p class="pull-left text-center">道可道 非常道<br>名可名 非常名</p>
+          <div class="pull-right text-center">
+            <img class="img-rounded img-responsive" src="img/i_ching_small.png" alt="I Ching">
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrVZmfNNuYia8DX5k3z-U6aato2dznmqo&amp;signed_in=true" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<script type="text/javascript" src="https://raw.githubusercontent.com/pcooksey/bibtex-js/master/src/bibtex_js.js"></script>
+		<script src="js/secretaire.js"></script>
+	</body>
+</html>
