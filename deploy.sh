@@ -13,15 +13,15 @@ fi
 echo $lastCommit
 filesChanged=$(git diff-tree --no-commit-id --name-only -r $lastCommit)
 if [ ${#filesChanged[@]} -eq 0 ]; then
-echo "No files to update"
+	echo "No files to update"
 else
-for f in $filesChanged
-do
-#do not upload these files that aren't necessary to the site
-if [ "$f" != ".travis.yml" ] && [ "$f" != "deploy.sh" ] && [ "$f" != "test.js" ] && [ "$f" != "package.json" ]
-then
-echo "Uploading $f"
+	for f in $filesChanged
+	do
+		#do not upload these files that aren't necessary to the site
+		if [ "$f" != ".travis.yml" ] && [ "$f" != "deploy.sh" ] && [ "$f" != "test.js" ] && [ "$f" != "package.json" ]
+		then
+			echo "Uploading $f"
 	 		curl --ftp-create-dirs -T $f -u $FTP_USER:$FTP_PASS $FTP_SITE/$f
-fi
-done
+		fi
+	done
 fi
