@@ -485,14 +485,14 @@
       ================================================== -->
       <div id="publications" class="row main-content-item hidden">
 
-				<div class="col-md-6 col-xs-12">
+				<div class="col-md-3 col-xs-6">
 					<h3 class="my-caption">My Publications</h3>
 					<a name="top"></a>
 
 			    <!-- le searchbar -->
 			    <form class="form-inline">
 						<div class="form-group searchbar">
-			    		<button type="button" class="btn btn-default" onclick="reset()">Reset</button>
+			    		<button type="button" class="btn btn-default" onclick="bibtex_reset()">Reset</button>
 							<select id="authorselect" class="form-control bibtex_search bibtex_author" search="author">
 						    <option value="">Search Author</option>
 						  </select>
@@ -501,71 +501,69 @@
 			        </select> -->
 			    	</div>
 			    </form>
+				</div>
 
-					<h3 class="my-caption">Showcase</h3>
+				<div class="col-md-9 col-xs-12">
+					<!--<h3 class="my-caption">Showcase</h3>
 					<div class="panel panel-default">
 						<div class="panel-body embed-responsive embed-responsive-4by3">
-								<iframe class="embed-responsive-item" src="http://www.nrm.deib.polimi.it/?p=1720"></iframe>
-								<!-- preview <iframe class="thumbnail" src="http://dx.doi.org/10.1061/(ASCE)WR.1943-5452.0000570"></iframe>
-								 -->
+								<iframe class="thumbnail" src="http://dx.doi.org/10.1061/(ASCE)WR.1943-5452.0000570"></iframe>
 					  </div>
-					</div>
+					</div>-->
 			  </div>
 
 		    <div class="bibtex_structure">
 		      <div class="group year" extra="ASC number">
-		      	  <a class="top_page" href="#top"><em>(Top of the page)</em></a>
+		      	<a class="top_page" href="#top"><em>(Top of the page)</em></a>
 		      	  <div class="sort journal" extra="DESC string">
 		          	<div class="templates"></div>
 		          </div>
 		      </div>
 		    </div>
 
-		    <div id="bibtex_display" class="col-md-6 col-xs-12">
+		    <div id="bibtex_display" class="col-md-12"></div>
 
-		      <div class="if bibtex_template">
-		        <ul class="list-unstyled"><li>
-		          <span class="if journal doi">
-		            <a class="bibtexVar" href="http://dx.doi.org/+BIBTEXDOI+" extra="BIBTEXDOI">
-		              <span class="title"></span>,
-		            </a>
-		          </span>
-		          <span class="if title">
-								<a class="bibtexVar" href="resources/papers/+BIBTEXKEY+.pdf" extra="BIBTEXKEY">
-		              <span class="title"></span>,
-		            </a>
-		          </span>
-		          <div class="if author">
-		            <span class="author"></span>
-		          </div>
-		          <div>
-		            <span class="if journal"><em><span class="journal"></span></em>,</span>
-		            <span class="if booktitle">In <em><span class="booktitle"></span></em>,</span>
-		            <span class="if editor"><span class="editor"></span> (editors),</span>
-		            <span class="if publisher"><em><span class="publisher"></span></em>,</span>
-		            <span class="if !journal number">Technical report <span class="number"></span>,</span>
-		            <span class="if institution"><span class="institution"></span>,</span>
-		            <span class="if address"><span class="address"></span>,</span>
-		            <span class="if volume"><span class="volume"></span>,</span>
-		            <span class="if journal number">(<span class="number"></span>),</span>
-		            <span class="if pages"> pages <span class="pages"></span>,</span>
-		            <span class="if month"><span class="month"></span>,</span>
-		            <span class="if year"><span class="year"></span>.</span>
-		            <span class="if note"><span class="note"></span>.</span>
-		            <a class="bibtexVar" role="button" data-toggle="collapse" href="#bib+BIBTEXKEY+" aria-expanded="false" aria-controls="bib+BIBTEXKEY+" extra="BIBTEXKEY">
-		    		      [bib]
-		    		    </a>
-		          </div>
-		          <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
-		    		  <div class="well">
-		    		    <pre><span class="bibtexraw noread"></span></pre>
-		    		  </div>
+	      <div class="if bibtex_template">
+	        <ul class="list-group"><li class="list-group-item">
+	          <span class="if journal doi">
+	            <a class="bibtexVar" href="http://dx.doi.org/+BIBTEXDOI+" extra="BIBTEXDOI">
+	              <span class="title"></span>,
+	            </a>
+	          </span>
+	          <span class="if title">
+							<a class="bibtexVar" href="resources/papers/+BIBTEXKEY+.pdf" extra="BIBTEXKEY">
+	              <span class="title"></span>,
+	            </a>
+	          </span>
+	          <div class="if author">
+	            <span class="author"></span>
+	          </div>
+	          <div>
+	            <span class="if journal"><em><span class="journal"></span></em>,</span>
+	            <span class="if booktitle">In <em><span class="booktitle"></span></em>,</span>
+	            <span class="if editor"><span class="editor"></span> (editors),</span>
+	            <span class="if publisher"><em><span class="publisher"></span></em>,</span>
+	            <span class="if !journal number">Technical report <span class="number"></span>,</span>
+	            <span class="if institution"><span class="institution"></span>,</span>
+	            <span class="if address"><span class="address"></span>,</span>
+	            <span class="if volume"><span class="volume"></span>,</span>
+	            <span class="if journal number">(<span class="number"></span>),</span>
+	            <span class="if pages"> pages <span class="pages"></span>,</span>
+	            <span class="if month"><span class="month"></span>,</span>
+	            <span class="if year"><span class="year"></span>.</span>
+	            <span class="if note"><span class="note"></span>.</span>
+	            <a class="bibtexVar" role="button" data-toggle="collapse" href="#bib+BIBTEXKEY+" aria-expanded="false" aria-controls="bib+BIBTEXKEY+" extra="BIBTEXKEY">
+	    		      [bib]
+	    		    </a>
+	          </div>
+	          <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
+	    		  	<div class="well">
+	    		    	<pre><span class="bibtexraw noread"></span></pre>
+	    		  	</div>
 		    	  </div>
-		    	  <div style="display:none"><span class="bibtextype"></span></div>
-		        </li></ul>
-		      </div>
-
-		    </div>
+	    	  	<div style="display:none"><span class="bibtextype"></span></div>
+	        </li></ul>
+	      </div>
 
       </div><!-- end of publications-tab -->
 
