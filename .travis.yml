@@ -4,6 +4,8 @@ notifications:
 language: node_js
 node_js:
   - "0.11"
+before_install:
+  - chmod +x deploy.sh
 after_success:
   - ./deploy.sh 
 env:
