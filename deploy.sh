@@ -1,7 +1,6 @@
 #!/bin/bash
 gitLastCommit=$(git show --summary --grep="Merge pull request")
-if [[ -z "$gitLastCommit" ]]
-then
+if [[ -z "$gitLastCommit" ]]; then
 	lastCommit=$(git log --format="%H" -n 1)
 else
 	echo "We got a Merge Request!"
