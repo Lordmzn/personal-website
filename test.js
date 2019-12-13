@@ -1,1 +1,0 @@
-console.log('The answer to your question is 42...');

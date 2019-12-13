@@ -1,0 +1,185 @@
+import React from 'react'
+import { 
+  Container, Grid,
+  Card, CardMedia, CardContent, CardActions,
+  Button,
+  Typography
+} from '@material-ui/core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// images
+import img_sec from '../assets/prjcts/SEC.jpg'
+import img_more from '../assets/prjcts/ORN.jpeg'
+import img_dmmt from '../assets/prjcts/DMMT_logo.png'
+import img_imrr from '../assets/prjcts/IMRR.png'
+import img_RRwiki from '../assets/prjcts/RR_wiki.jpg'
+import img_Classic from '../assets/prjcts/classicThesis_DEIB.png'
+
+console.log(img_more);
+
+const cards = [
+  {
+    title: 'SEC negotiation protocol',
+    description: 'Negotiation protocol to identify tradeoff among conflicting objectives. Matlab code available.',
+    media: {
+      image: img_sec,
+      title: 'negotiation'
+    },
+    actions: [
+      {
+        type: 'article',
+        doi: '10.1002/2017WR021431'
+      },
+      {
+        type: 'code-github',
+        repo: 'Lordmzn/evolving-tradeoffs',
+      }
+    ]
+  },
+  {
+    title: 'Benefits of river restoration',
+    description: 'Review of river restoration works across Western Europe to highlight multiple benefits on flood risk reduction and ecological status improvement.',
+    media: {
+      image: img_RRwiki,
+      title: 'RR wiki logo'
+    },
+    actions: [
+      {
+        type: 'external-link',
+        href: 'https://europe.wetlands.org/publications/benefits-european-river-restoration-schemes/',
+        text: 'Published report'
+      }
+    ]
+  },
+  {
+    title: 'MORE',
+    description: 'Multi Objective Riverscape Evolution, previously known as MOGLE. A study of optimality in river erosional process. Since my master thesis.',
+    media: {
+      image: img_more,
+      title: 'MORE'
+    },
+    actions: [
+      {
+        type: 'article',
+        doi: '10.1029/2018WR022977'
+      },
+      {
+        type: 'external-link',
+        href: 'https://www.politesi.polimi.it/handle/10589/77182',
+        text: 'thesis'
+      }
+    ]
+  },
+  {
+    title: 'DMMT',
+    description: 'Program to code equations of dynamic models and simulate them in a very fast way. Python and C++.',
+    media: {
+      image: img_dmmt,
+      title: 'DMMT'
+    },
+    actions: [
+      {
+        type: 'code-github',
+        repo: 'Lordmzn/pydmmt',
+      }
+    ]
+  },
+  {
+    title: 'IMRR',
+    description: 'The IMRR project aims at developing and promoting strategies for the sustainable management of the Red-Thai Binh Rivers System in Vietnam through coordinated decision-making and negotiation, supported by modelling and optimization tools and through capacity building of local authorities in the water sector.',
+    media: {
+      image: img_imrr,
+      title: 'Loghi IMRR'
+    },
+    actions: [
+      {
+        type: 'external-link',
+        href: 'http://xake.elet.polimi.it/imrr',
+        text: 'project site'
+      },
+      {
+        type: 'external-link',
+        href: 'http://xake.elet.polimi.it/IMRR_Reports/D7.1Report.pdf',
+        text: 'report'
+      },
+    ]
+  },
+  {
+    title: 'Classic thesis @ DEIB',
+    description: 'This is a latex template ready to be used when writing thesis at Politecnico di Milano IT department.',
+    media: {
+      image: img_Classic,
+      title: 'Classic thesis LaTeX template for DEIB'
+    },
+    actions: [
+      {
+        type: 'code-github',
+        repo: 'Lordmzn/ClassicThesis-at-DEIB/'
+      }
+    ]
+  }
+];
+
+export default function Showcase() {
+  console.log(cards[0].media.image);
+  return (
+    <Container maxWidth={false}>
+      <Grid container spacing={2}>
+        {cards.map(card => (
+          <Grid item key={card.title} xs={6} sm={4} md={2}>
+            <Card>
+              <CardMedia
+                component='img'
+                image={card.media.image}
+                title={card.media.title}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h6" component="h3">
+                  {card.title}
+                </Typography>
+                <Typography>
+                  {card.description}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                {card.actions.map(action => (
+                  {
+                    'code-github': 
+                      <Button 
+                        size="small" 
+                        color="primary"
+                        startIcon={<FontAwesomeIcon icon={['fab', 'github']} />}
+                        href={'https://github.com/' + action.repo} 
+                        target='_blank'
+                      >
+                        code
+                      </Button>,
+                    'external-link':
+                      <Button 
+                        size="small" 
+                        color="primary"
+                        startIcon={<FontAwesomeIcon icon='external-link-alt' />}
+                        href={action.href} 
+                        target='_blank'
+                      >
+                        {action.text}
+                      </Button>,
+                    'article':
+                      <Button
+                        size="small"
+                        color="primary"
+                        startIcon={<FontAwesomeIcon icon='pen-fancy' />}
+                        href={'https://doi.org/' + action.doi}
+                        target='_blank'
+                      >
+                        article
+                      </Button>,
+                  }[action.type]
+                ))}
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
+  )
+};
