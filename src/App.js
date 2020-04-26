@@ -4,9 +4,13 @@ import {
   AppBar, Toolbar, Tabs, Tab,
   IconButton, Typography, Link
 } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 import Showcase from './components/Showcase';
 
+// assets
 import cv from "./assets/cv_EmanueleMason.pdf"
+import img_background from './assets/background.jpg'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -14,6 +18,48 @@ import { faExternalLinkAlt, faPenFancy, faSquare } from '@fortawesome/free-solid
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 library.add(fab, faExternalLinkAlt, faPenFancy, faSquare)
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: fade('#f57f17', 0.85),
+      contrastText: '#fafafa',
+    },
+    secondary: {
+      main: fade('#689f38', 0.55),
+      contrastText: '#fafafa',
+    },
+    typography: {
+      fontFamily: [
+        '"Nunito"', 
+        '"Helvetica Neue"', 
+        'sans-serif'
+      ].join(','),
+      fontSize: 10,
+    },
+    text: {
+      primary: fade('#fcfcfc', 0.95),
+      secondary: fade('#ececec', 0.95),
+    },
+    background: {
+      paper: fade('#4f2600', 0.65),
+      default: fade('#683000', 0.65),
+    }
+  },
+  overrides: {
+    MuiCssBaseline: {
+      "@global": {
+        body: {
+          backgroundImage: 'url(' + img_background + ')',
+          backgroundPosition: 'left top',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          backgroundAttachment: 'fixed',
+          height: '100%'
+        }
+      }
+    }
+  }
+});
 
 function Copyright() {
   return (
@@ -35,15 +81,46 @@ function a11yProps(index) {
   };
 }
 
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
+  main: {
+    display: 'flex'
+  },
+  content: {
+    minWidth: "100vw",
+    minHeight: "83vh" 
+  },
+  library: {
+    backgroundColor: fade('#ffffff', 0.75),
+  },
+  footer: {
+    marginTop: 'auto',
+    padding: '10px',
+    display: 'flex',
+    backgroundColor: fade('#4f2600', 0.65),
+  },
+  footerItem: {
+    margin: '0px 30px'
+  }
+});
+
 export default function App() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-// https://scholar.google.it/citations?hl=it&user=MSo2pEEAAAAJ
+
+  const classes = useStyles();
+
+  // https://scholar.google.it/citations?hl=it&user=MSo2pEEAAAAJ
   return (
-     <React.Fragment>
+     <ThemeProvider theme={theme}>
+     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
@@ -91,7 +168,7 @@ export default function App() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <main>
+      <main className={classes.main}>
         {
           [0, 1, 2].map(index =>
             <Typography
@@ -100,33 +177,43 @@ export default function App() {
               hidden={value !== index}
               id={`simple-tabpanel-${index}`}
               aria-labelledby={`simple-tab-${index}`}
+              className={classes.content}
             >
               {value === index && {
                 0: <Showcase />,
-                1: <embed src={cv} type="application/pdf" width="100%" height="600" />,
-                2: <embed width="100%" height="100%" src="http://bibbase.org/show?bib=http://bibbase.org/zotero/LordMzn"></embed>
+                1: <embed src={cv} type="application/pdf" width="100%" height="100%" />,
+                2: <embed 
+                    width="100%" height="100%" className={classes.library}
+                    src="http://bibbase.org/show?bib=http://bibbase.org/zotero/LordMzn"
+                  >
+                  </embed>
               }[value]}
             </Typography>
           )
         }
       </main>
       {/* Footer */}
-      <footer>
-        <Typography variant="h6" align="center" gutterBottom>
-          道可道 非常道
-        </Typography>
-        <Typography variant="h6" align="center" gutterBottom>
-          名可名 非常名
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          {'Made with ❤ and some sweat & tears too. '}
-          <Link color="inherit" href="https://github.com/Lordmzn/personal-website">
-            Fork me on GitHub!
-          </Link>
-        </Typography>
-        <Copyright />
+      <footer className={classes.footer}>
+        <div className={classes.footerItem}>
+          <Typography variant="h6" align="center" gutterBottom>
+            道可道 非常道
+          </Typography>
+          <Typography variant="h6" align="center" gutterBottom>
+            名可名 非常名
+          </Typography>
+        </div>
+        <div className={classes.footerItem}>
+          <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+            {'Made with ❤ and some sweat & tears too. '}
+            <Link color="inherit" href="https://github.com/Lordmzn/personal-website">
+              Fork me on GitHub!
+            </Link>
+          </Typography>
+          <Copyright />
+        </div>
       </footer>
       {/* End footer */}
-    </React.Fragment>
+    </div>
+    </ThemeProvider>
   );
 }

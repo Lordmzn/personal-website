@@ -1,0 +1,383 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"bri",
+				"brickY"
+			],
+			[
+				"dra",
+				"drawPaddle"
+			],
+			[
+				"Ca",
+				"CardContent"
+			],
+			[
+				"Car",
+				"CardContent"
+			],
+			[
+				"C",
+				"CardHeader"
+			],
+			[
+				"clas",
+				"classes"
+			],
+			[
+				"S",
+				"SecondaryResumeItem"
+			],
+			[
+				"ce",
+				"createMuiTheme"
+			],
+			[
+				"bac",
+				"Background"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"rende",
+				"renderFrame"
+			],
+			[
+				"T",
+				"Typography"
+			],
+			[
+				"M",
+				"MenuIcon"
+			],
+			[
+				"Menu",
+				"menuButton"
+			],
+			[
+				"A",
+				"AppBar"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/App.js",
+			"settings":
+			{
+				"buffer_size": 4311,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/index.js",
+			"settings":
+			{
+				"buffer_size": 452,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"side",
+				"SublimeLinter: Reload SublimeLinter and its Plugins"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/lordmzn/Downloads/1b-singolo-edificio.html",
+		"/Users/lordmzn/Downloads/dpc-covid19-ita-regioni.csv",
+		"/Users/lordmzn/Downloads/province.csv",
+		"/Users/lordmzn/Progetti/Enersem-DB CENED/CENED_elab.csv",
+		"/Users/lordmzn/Downloads/dpc-covid19-ita-province.csv",
+		"/Users/lordmzn/Downloads/tepore-bck/data/help.1.0.html",
+		"/Users/lordmzn/Downloads/tepore-bck/data/algoritm-content.v2",
+		"/Users/lordmzn/Downloads/nrgh-bck/README.md",
+		"/Users/lordmzn/Downloads/ds598_catasto-unico-regionale-impianti-termici-impianti-_bsud-wgiy.csv",
+		"/Users/lordmzn/Downloads/ds604_cened-certificazione-energetica-degli-edifici-nel-_hjdq-p8bt.csv",
+		"/Users/lordmzn/Progetti/Enersem-MAMMOTH/ui/node_modules/@ant-design/icons/lib/fill/SlackSquareFill.js",
+		"/Users/lordmzn/Progetti/Enersem-MAMMOTH/backend/src/projects/Trigeneratore_Poli/timeseries_to_platform.csv",
+		"/Users/lordmzn/Progetti/Enersem-MAMMOTH/backend/src/mammoth/static/mammoth/css/dataraw.css",
+		"/Users/lordmzn/Desktop/stationary_points_detection_v02.ipynb",
+		"/Users/lordmzn/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/B1CF2131-86D0-4FE2-BE5B-F86B794DF8DE/main.py",
+		"/Users/lordmzn/Progetti/Enersem-ML-FastAPI-files/code/data/feature_sets/prova.yml",
+		"/Users/lordmzn/Progetti/kiitos/listing esempio.csv",
+		"/Users/lordmzn/Progetti/kiitos/Appunti kiitos.md",
+		"/Users/lordmzn/Progetti/Raspberry/store_data_from_device.py",
+		"/Users/lordmzn/Downloads/rsa_public.pem",
+		"/Users/lordmzn/Downloads/main.tex",
+		"/Users/lordmzn/Progetti/Enersem-TLRLodi/data/Utenze-Visualizzazione.csv",
+		"/Users/lordmzn/Environments/notebooks/share/jupyter/lab/staging/node_modules/codemirror/addon/tern/tern.css",
+		"/Users/lordmzn/Progetti/kiitos/Scoperto - Tabella.csv",
+		"/Users/lordmzn/Progetti/kiitos/code/listings.json",
+		"/Users/lordmzn/Downloads/material-components-web.min.css",
+		"/Users/lordmzn/Downloads/material-components-web.min.js",
+		"/Users/lordmzn/Downloads/material-components-web-wordpress-master/inc/walker-nav-menu-edit.php",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/public/index.html",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/index.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/App.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/Resume.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/LMAppBar.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/Tetris.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/index.css",
+		"/Users/lordmzn/Library/Application Support/Sublime Text 3/Packages/Babel/Babel.sublime-settings",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/package.json",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/Page.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/App.test.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/App.css",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/public/.eslintrc",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/public/favicon.ico",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/containers/App.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/webpack.config.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/index.html",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/.babelrc",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/oldindex.html",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/components/App.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/webpack.dev.config.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/.gitignore",
+		"/Users/lordmzn/Progetti/PersonalWebsite/react-website/README.md",
+		"/Users/lordmzn/Progetti/PersonalWebsite/react-website/src/index.js"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/App.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4311,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 452,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.163.region_keys":
+							[
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.SublimeLinter Messages":
+	{
+		"height": 143.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "personal-website.sublime-project",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 209.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -5,6 +5,7 @@ import {
   Button,
   Typography
 } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // images
 import img_sec from '../assets/prjcts/SEC.jpg'
@@ -13,8 +14,6 @@ import img_dmmt from '../assets/prjcts/DMMT_logo.png'
 import img_imrr from '../assets/prjcts/IMRR.png'
 import img_RRwiki from '../assets/prjcts/RR_wiki.jpg'
 import img_Classic from '../assets/prjcts/classicThesis_DEIB.png'
-
-console.log(img_more);
 
 const cards = [
   {
@@ -119,10 +118,16 @@ const cards = [
   }
 ];
 
-export default function Showcase() {
-  console.log(cards[0].media.image);
+const useStyles = makeStyles({
+  main: {
+    padding: '30px',  
+  }, // a style rule backgroundImage: img_background
+});
+
+export default function Showcase(props) {
+  const classes = useStyles(props);
   return (
-    <Container maxWidth={false}>
+    <Container maxWidth={false} className={classes.main}>
       <Grid container spacing={2}>
         {cards.map(card => (
           <Grid item key={card.title} xs={6} sm={4} md={2}>
@@ -141,10 +146,11 @@ export default function Showcase() {
                 </Typography>
               </CardContent>
               <CardActions>
-                {card.actions.map(action => (
+                {card.actions.map((action, index) => (
                   {
                     'code-github': 
                       <Button 
+                        key={index}
                         size="small" 
                         color="primary"
                         startIcon={<FontAwesomeIcon icon={['fab', 'github']} />}
@@ -155,6 +161,7 @@ export default function Showcase() {
                       </Button>,
                     'external-link':
                       <Button 
+                        key={index}
                         size="small" 
                         color="primary"
                         startIcon={<FontAwesomeIcon icon='external-link-alt' />}
@@ -165,6 +172,7 @@ export default function Showcase() {
                       </Button>,
                     'article':
                       <Button
+                        key={index}
                         size="small"
                         color="primary"
                         startIcon={<FontAwesomeIcon icon='pen-fancy' />}
