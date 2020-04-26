@@ -6,7 +6,9 @@ import {
 } from '@material-ui/core';
 import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+
 import Showcase from './components/Showcase';
+import Demo from './components/Demo';
 
 // assets
 import cv from "./assets/cv_EmanueleMason.pdf"
@@ -134,6 +136,7 @@ export default function App() {
             <Tab label="Portfolio" {...a11yProps(0)} />
             <Tab label="Biography" {...a11yProps(1)} />
             <Tab label="Library" {...a11yProps(2)} />
+            <Tab label="Demo" {...a11yProps(3)} />
           </Tabs>
           <IconButton
             color="inherit"
@@ -170,7 +173,7 @@ export default function App() {
       </AppBar>
       <main className={classes.main}>
         {
-          [0, 1, 2].map(index =>
+          [0, 1, 2, 3].map(index =>
             <Typography
               component="div"
               role="tabpanel"
@@ -186,7 +189,8 @@ export default function App() {
                     width="100%" height="100%" className={classes.library}
                     src="http://bibbase.org/show?bib=http://bibbase.org/zotero/LordMzn"
                   >
-                  </embed>
+                  </embed>,
+                3: <Demo />
               }[value]}
             </Typography>
           )
