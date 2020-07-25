@@ -83,32 +83,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/App.js",
-			"settings":
-			{
-				"buffer_size": 6346,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "package.json",
-			"settings":
-			{
-				"buffer_size": 1115,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/components/Showcase.js",
-			"settings":
-			{
-				"buffer_size": 5880,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -162,13 +136,16 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/lordmzn/Progetti/PersonalWebsite/new/personal-website",
-		"/Users/lordmzn/Progetti/PersonalWebsite/new/personal-website/src",
-		"/Users/lordmzn/Progetti/PersonalWebsite/new/personal-website/src/assets",
-		"/Users/lordmzn/Progetti/PersonalWebsite/new/personal-website/src/components"
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/public"
 	],
 	"file_history":
 	[
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/components/Showcase.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/public/index.html",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/App.js",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/package.json",
+		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/README.md",
 		"/Users/lordmzn/Progetti/PersonalWebsite/new/personal-website/src/index.js",
 		"/Users/lordmzn/Downloads/1b-singolo-edificio.html",
 		"/Users/lordmzn/Downloads/dpc-covid19-ita-regioni.csv",
@@ -198,15 +175,12 @@
 		"/Users/lordmzn/Downloads/material-components-web.min.css",
 		"/Users/lordmzn/Downloads/material-components-web.min.js",
 		"/Users/lordmzn/Downloads/material-components-web-wordpress-master/inc/walker-nav-menu-edit.php",
-		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/public/index.html",
 		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/index.js",
-		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/App.js",
 		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/Resume.js",
 		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/LMAppBar.js",
 		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/Tetris.js",
 		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/index.css",
 		"/Users/lordmzn/Library/Application Support/Sublime Text 3/Packages/Babel/Babel.sublime-settings",
-		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/package.json",
 		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/Page.js",
 		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/App.test.js",
 		"/Users/lordmzn/Progetti/PersonalWebsite/personal-website/src/App.css",
@@ -256,110 +230,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/App.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6346,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2342,
-								2342
-							]
-						],
-						"settings":
-						{
-							"SL.162.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1277.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1115,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"SL.186.region_keys":
-							[
-							],
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/components/Showcase.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5880,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3584,
-								3617
-							]
-						],
-						"settings":
-						{
-							"SL.164.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
