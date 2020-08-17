@@ -8,7 +8,7 @@ import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/sty
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
 import Showcase from './components/Showcase';
-import Demo from './components/Demo';
+import DataStories from './components/DataStories';
 
 // assets
 import cv from "./assets/cv_EmanueleMason.pdf"
@@ -127,7 +127,7 @@ export default function App() {
       <AppBar position="relative">
         <Toolbar>
           <Typography variant="h6">
-            <Link color="inherit" href="https://en.wikipedia.org/wiki/List_of_hexagrams_of_the_I_Ching#Hexagram_10">
+            <Link color="inherit" href="https://en.wikipedia.org/wiki/List_of_hexagrams_of_the_I_Ching#Hexagram_10" target="_blank">
               ䷉ 履
             </Link>
             {' '} Personal website of Emanuele Mason
@@ -136,7 +136,7 @@ export default function App() {
             <Tab label="Portfolio" {...a11yProps(0)} />
             <Tab label="Biography" {...a11yProps(1)} />
             <Tab label="Library" {...a11yProps(2)} />
-            <Tab label="Demo" {...a11yProps(3)} />
+            <Tab label="Data Stories" {...a11yProps(3)} />
           </Tabs>
           <IconButton
             color="inherit"
@@ -190,7 +190,7 @@ export default function App() {
                     src="http://bibbase.org/show?bib=http://bibbase.org/zotero/LordMzn"
                   >
                   </embed>,
-                3: <Demo />
+                3: <DataStories />
               }[value]}
             </Typography>
           )
@@ -209,7 +209,7 @@ export default function App() {
         <div className={classes.footerItem}>
           <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
             {'Made with ❤ and some sweat & tears too. '}
-            <Link color="inherit" href="https://github.com/Lordmzn/personal-website">
+            <Link color="inherit" href="https://github.com/Lordmzn/personal-website" target="_blank">
               Fork me on GitHub!
             </Link>
           </Typography>

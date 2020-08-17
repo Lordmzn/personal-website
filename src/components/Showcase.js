@@ -17,6 +17,20 @@ import img_Classic from '../assets/prjcts/classicThesis_DEIB.png'
 
 const cards = [
   {
+    title: 'IoT experiments',
+    description: 'Envirophat, Raspberry pi0W and Google Cloud.',
+    media: {
+      image: null
+    },
+    actions: [
+      {
+        type: 'external-link',
+        href: 'https://datastudio.google.com/reporting/670292d3-73a2-4264-93ec-d03cb0052ee6',
+        text: 'DataStudio dashboard'
+      }
+    ]
+  },
+  {
     title: 'SEC negotiation protocol',
     description: 'Negotiation protocol to identify tradeoff among conflicting objectives. Matlab code available.',
     media: {
