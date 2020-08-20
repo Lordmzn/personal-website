@@ -7,6 +7,9 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import RaspEnvDashboard from './RaspEnvDashboard'
+
 // images
 import img_sec from '../assets/prjcts/SEC.jpg'
 import img_more from '../assets/prjcts/ORN.jpeg'
@@ -23,6 +26,10 @@ const cards = [
       image: null
     },
     actions: [
+      {
+        type: 'internal-link',
+        component: 'RaspEnvDashboard'
+      },
       {
         type: 'external-link',
         href: 'https://datastudio.google.com/reporting/670292d3-73a2-4264-93ec-d03cb0052ee6',
@@ -140,8 +147,16 @@ const useStyles = makeStyles({
 
 export default function Showcase(props) {
   const classes = useStyles(props);
+
+  const [activeStuff, setValue] = React.useState('grid');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <Container maxWidth={false} className={classes.main}>
+      {activeStuff === 'grid' && 
       <Grid container spacing={2}>
         {cards.map(card => (
           <Grid item key={card.title} xs={6} sm={4} md={2}>
@@ -184,6 +199,16 @@ export default function Showcase(props) {
                       >
                         {action.text}
                       </Button>,
+                    'internal-link':
+                      <Button
+                        key={index}
+                        size="small"
+                        color="primary"
+                        startIcon={<FontAwesomeIcon icon='pen-fancy' />}
+                        onClick={e => handleChange(e, action.component)}
+                      >
+                        {action.text}
+                      </Button>,
                     'article':
                       <Button
                         key={index}
@@ -194,7 +219,7 @@ export default function Showcase(props) {
                         target='_blank'
                       >
                         article
-                      </Button>,
+                      </Button>
                   }[action.type]
                 ))}
               </CardActions>
@@ -202,6 +227,10 @@ export default function Showcase(props) {
           </Grid>
         ))}
       </Grid>
+    }
+    {activeStuff === 'RaspEnvDashboard' &&
+      <RaspEnvDashboard />
+    }
     </Container>
   )
 };
