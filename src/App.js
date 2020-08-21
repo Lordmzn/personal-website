@@ -16,9 +16,11 @@ import img_background from './assets/background.jpg'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faExternalLinkAlt, faPenFancy, faSquare } from '@fortawesome/free-solid-svg-icons'
+import { 
+  faExternalLinkAlt, faPenFancy, faSquare, faPaperclip
+ } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
-library.add(fab, faExternalLinkAlt, faPenFancy, faSquare)
+library.add(fab, faExternalLinkAlt, faPenFancy, faSquare, faPaperclip)
 
 const theme = createMuiTheme({
   palette: {
@@ -136,7 +138,7 @@ export default function App() {
             <Tab label="Portfolio" {...a11yProps(0)} />
             <Tab label="Biography" {...a11yProps(1)} />
             <Tab label="Library" {...a11yProps(2)} />
-            <Tab label="Data Stories" {...a11yProps(3)} />
+            {false && <Tab label="Data Stories" {...a11yProps(3)} />}
           </Tabs>
           <IconButton
             color="inherit"
@@ -159,7 +161,7 @@ export default function App() {
           >
             <span className="fa-layers fa-fw">
               <FontAwesomeIcon icon="square" size="lg"/>
-              <FontAwesomeIcon icon={['fab', 'google']} style={{color:"RoyalBlue"}}/>
+              <FontAwesomeIcon icon={['fab', 'google']} style={{color:"DarkOrange"}}/>
             </span>
           </IconButton>
           <IconButton

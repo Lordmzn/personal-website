@@ -1,14 +1,14 @@
 import React from 'react'
 import { 
   Container, Grid,
-  Card, CardMedia, CardContent, CardActions,
+  Paper, Card, CardMedia, CardContent, CardActions,
   Button,
   Typography
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import RaspEnvDashboard from './RaspEnvDashboard'
+import MdViewer from './MdViewer'
 
 // images
 import img_sec from '../assets/prjcts/SEC.jpg'
@@ -17,6 +17,8 @@ import img_dmmt from '../assets/prjcts/DMMT_logo.png'
 import img_imrr from '../assets/prjcts/IMRR.png'
 import img_RRwiki from '../assets/prjcts/RR_wiki.jpg'
 import img_Classic from '../assets/prjcts/classicThesis_DEIB.png'
+// other assets
+import raspEnvPath from '../assets/prjcts/raspEnv.md'
 
 const cards = [
   {
@@ -28,12 +30,13 @@ const cards = [
     actions: [
       {
         type: 'internal-link',
+        text: 'HowTo',
         component: 'RaspEnvDashboard'
       },
       {
         type: 'external-link',
         href: 'https://datastudio.google.com/reporting/670292d3-73a2-4264-93ec-d03cb0052ee6',
-        text: 'DataStudio dashboard'
+        text: 'dashboard'
       }
     ]
   },
@@ -204,7 +207,7 @@ export default function Showcase(props) {
                         key={index}
                         size="small"
                         color="primary"
-                        startIcon={<FontAwesomeIcon icon='pen-fancy' />}
+                        startIcon={<FontAwesomeIcon icon='paperclip' />}
                         onClick={e => handleChange(e, action.component)}
                       >
                         {action.text}
@@ -229,7 +232,12 @@ export default function Showcase(props) {
       </Grid>
     }
     {activeStuff === 'RaspEnvDashboard' &&
-      <RaspEnvDashboard />
+      <Paper>
+        <MdViewer markdownPath={raspEnvPath} />
+        <Button onClick={e => handleChange(e, 'grid')}>
+          return to portfolio
+        </Button>
+      </Paper>
     }
     </Container>
   )
