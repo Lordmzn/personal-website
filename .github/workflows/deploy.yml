@@ -63,20 +63,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Node 12 is long EOL and this pin is not a recommendation — it is a
-      # constraint. react-scripts 3.3.0 is webpack 4, which hashes with MD4;
-      # OpenSSL 3 removed MD4, so the build fails on Node 17+ with
-      # `error:0308010C:digital envelope routines::unsupported`. The bump comes
-      # with the SvelteKit rewrite that removes react-scripts, not before —
-      # see design/05-implementation-plan.md, Phase 1.
+      # Node 12 was pinned here only for as long as react-scripts 3.3.0 was:
+      # webpack 4 hashes with MD4, which OpenSSL 3 removed, so that build died
+      # on Node 17+. The SvelteKit rewrite dropped react-scripts, so the pin
+      # goes with it — the version now comes from .nvmrc, shared with local dev.
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '12.x'
+          node-version-file: '.nvmrc'
+          cache: pnpm
 
       - name: Build
         run: |
-          yarn install
-          yarn build
+          pnpm install --frozen-lockfile
+          pnpm run build
 
       # A typo here would point the sync at the FTP root or at /htdocs/decktools.
       # Cheap insurance: accept exactly one value.
