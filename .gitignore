@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# SvelteKit
+.svelte-kit/
+/build
+/static/.DS_Store

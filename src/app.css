@@ -1,0 +1,412 @@
+/* Self-hosted webfonts — no third-party requests, works offline.
+   Outfit for everything, Space Mono for eyebrows/labels/numerics.
+   (The design/mockups/*.html files load these from Google Fonts; that is a
+   mockup convenience and deliberately does not survive into production.) */
+@import '@fontsource-variable/outfit/index.css';
+@import '@fontsource/space-mono/400.css';
+@import '@fontsource/space-mono/700.css';
+
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* ── Design tokens ────────────────────────────────────────────────────────────
+   Copied from ../LMdecktools/src/app.css so the two sites share one system
+   rather than two similar-looking ones. The orange scale is Tailwind's stock
+   one and is deliberately not redefined here. The slate scale is the design
+   system's own — darker and less blue than Tailwind's at the low end.
+
+   Not carried over: the feedback (success/warning/danger) and categorical
+   colour lanes, the forms plugin, and the .field/.seg component classes. Those
+   exist for decktools' app UI; this site is three static pages with no alarms,
+   no data columns and one form-free surface. */
+@theme {
+	--font-sans: 'Outfit Variable', -apple-system, BlinkMacSystemFont, sans-serif;
+	--font-display: 'Outfit Variable', -apple-system, BlinkMacSystemFont, sans-serif;
+	--font-mono: 'Space Mono', ui-monospace, monospace;
+
+	--color-slate-50: #f4f5f7;
+	--color-slate-100: #e4e6eb;
+	--color-slate-200: #cbcfd8;
+	--color-slate-300: #b0b4c0;
+	--color-slate-400: #8b90a0;
+	--color-slate-500: #636878;
+	--color-slate-600: #454a58;
+	--color-slate-700: #272b36;
+	--color-slate-800: #1a1d26;
+	--color-slate-900: #0f1218;
+	--color-slate-950: #0a0c10;
+
+	/* Semantic surfaces */
+	--color-surface: #0f1218;
+	--color-surface-raised: #1a1d26;
+
+	--radius-card: 16px;
+	--radius-compact: 20px;
+
+	--shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.25), 0 0 60px rgba(249, 115, 22, 0.05);
+	--shadow-accent: 0 2px 16px rgba(249, 115, 22, 0.3), 0 0 0 1px rgba(249, 115, 22, 0.1);
+	--shadow-accent-hover: 0 6px 28px rgba(249, 115, 22, 0.4);
+
+	--animate-pulse-dot: pulseDot 2s ease-in-out infinite;
+}
+
+:root {
+	/* Hairline borders carry the brand colour at low opacity rather than
+	   a solid neutral grey. */
+	--border-subtle: rgba(249, 115, 22, 0.08);
+	--border-default: rgba(249, 115, 22, 0.15);
+	--border-strong: rgba(249, 115, 22, 0.3);
+}
+
+/* ── Page base ─────────────────────────────────────────────────────────────── */
+html {
+	background-color: #0a0c10;
+	color: #b0b4c0;
+	-webkit-font-smoothing: antialiased;
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100vh;
+	overflow-x: hidden;
+	font-family: var(--font-sans);
+}
+
+/* The fixed photo backdrop. A gradient overlay darkens it top and bottom so
+   hero copy stays legible and the page resolves into flat slate-950 at the
+   foot, where the footer sits. */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	background-image: linear-gradient(
+			180deg,
+			rgba(10, 12, 16, 0.55) 0%,
+			rgba(10, 12, 16, 0.35) 30%,
+			rgba(10, 12, 16, 0.8) 75%,
+			#0a0c10 100%
+		),
+		url('/hero-bg.jpg');
+	background-size: cover;
+	background-position: center 30%;
+	background-repeat: no-repeat;
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* Film grain — sits above the background, below all content (which the layout
+   raises to z-index 2). Never intercepts pointer events.
+
+   This is the one piece of the decktools system that never made it into any of
+   the static mockups; design/00-README.md flags its absence there as a known
+   gap. It comes free here by keeping the rule. */
+body::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+	pointer-events: none;
+	z-index: 1;
+}
+
+/* ── Component classes ─────────────────────────────────────────────────────── */
+@layer components {
+	/* Eyebrow / tag label — mono, uppercase, letter-spaced. A typographic
+	   device, not a change of copy voice. */
+	.eyebrow {
+		font-family: var(--font-mono);
+		font-size: 0.62rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--color-orange-600);
+	}
+
+	/* Legibility rule for content sitting directly on the photo with no card
+	   behind it — hero copy, the Biography timeline. slate-400/500 reads as
+	   near-invisible against a bright photo, so labels shift to orange-300 and
+	   everything takes a shadow.
+
+	   This exists because the first pass of the timeline shipped unreadable;
+	   see design/02-design-system.md "Corrections". It is a utility rather than
+	   per-component CSS precisely so it cannot be forgotten next time. */
+	.on-photo {
+		text-shadow: 0 1px 10px rgba(0, 0, 0, 0.75);
+	}
+
+	.on-photo-label {
+		color: var(--color-orange-300);
+		text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+	}
+
+	/* Rope divider — the bespoke section rule used instead of <hr>. The line is
+	   a repeating-linear-gradient dash pattern, not a CSS dashed border. */
+	.rope-divider {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		height: 20px;
+	}
+
+	.rope-line {
+		flex: 1;
+		height: 2px;
+		opacity: 0.2;
+		background: repeating-linear-gradient(
+			90deg,
+			var(--color-orange-600) 0px,
+			var(--color-orange-600) 8px,
+			transparent 8px,
+			transparent 12px,
+			var(--color-orange-700) 12px,
+			var(--color-orange-700) 20px,
+			transparent 20px,
+			transparent 24px
+		);
+	}
+
+	.rope-knot {
+		flex-shrink: 0;
+		width: 8px;
+		height: 8px;
+		border: 2px solid var(--color-orange-500);
+		border-radius: 50%;
+		opacity: 0.25;
+	}
+
+	/* Surface card — dark, hairline border, no shadow at rest. Shadow, brighter
+	   border and a 4px lift appear only on hover. */
+	.surface-card {
+		position: relative;
+		background: var(--color-surface);
+		border: 1px solid var(--border-subtle);
+		border-radius: var(--radius-card);
+		transition:
+			border-color 0.3s ease,
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+	}
+
+	.surface-card-hover:hover {
+		border-color: rgba(249, 115, 22, 0.2);
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-card-hover);
+	}
+
+	/* Corner bracket accent — grows on hover. Feature/project cards only. */
+	.corner-bracket::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 60px;
+		height: 60px;
+		border-top: 2px solid var(--border-subtle);
+		border-right: 2px solid var(--border-subtle);
+		border-radius: 0 var(--radius-card) 0 0;
+		transition: all 0.3s ease;
+	}
+
+	.corner-bracket:hover::before {
+		width: 80px;
+		height: 80px;
+		border-color: rgba(249, 115, 22, 0.2);
+	}
+
+	/* Buttons — solid primary and outlined ghost carry the whole site. */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.6rem 1.2rem;
+		border-radius: 8px;
+		font-weight: 600;
+		font-size: 0.88rem;
+		letter-spacing: -0.01em;
+		cursor: pointer;
+		border: 1px solid transparent;
+		transition: all 0.25s ease;
+		text-decoration: none;
+	}
+
+	.btn-lg {
+		padding: 0.75rem 1.6rem;
+		font-size: 0.95rem;
+	}
+
+	.btn-primary {
+		background: var(--color-orange-500);
+		/* Dark label on the accent: white is only 2.9:1 on orange-500, this is 7.0:1 */
+		color: var(--color-slate-950);
+		box-shadow: var(--shadow-accent);
+	}
+
+	.btn-primary:hover {
+		background: var(--color-orange-600);
+		transform: translateY(-1px);
+		box-shadow: var(--shadow-accent-hover);
+	}
+
+	.btn-ghost {
+		background: rgba(10, 12, 16, 0.3);
+		color: var(--color-orange-300);
+		border-color: rgba(249, 115, 22, 0.2);
+	}
+
+	.btn-ghost:hover {
+		background: rgba(249, 115, 22, 0.06);
+		border-color: var(--border-strong);
+		transform: translateY(-1px);
+	}
+
+	/* Pill badge with a pulsing dot — the hero's first line. */
+	.hero-tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.35rem 1rem;
+		background: rgba(249, 115, 22, 0.08);
+		border: 1px solid var(--border-default);
+		border-radius: 100px;
+		font-family: var(--font-mono);
+		font-size: 0.65rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-orange-400);
+	}
+
+	.hero-tag .dot {
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: var(--color-orange-500);
+		animation: var(--animate-pulse-dot);
+	}
+
+	/* Waypoint marker — a numbered circle. Shared by the Portfolio route strip
+	   and the Biography timeline, which differ only in how they are connected
+	   (horizontal dashes vs. vertical). */
+	.waypoint-marker {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 52px;
+		height: 52px;
+		background: var(--color-surface);
+		border: 2px solid var(--color-orange-500);
+		border-radius: 50%;
+		color: var(--color-orange-400);
+		font-family: var(--font-mono);
+		font-weight: 700;
+		transition: all 0.3s ease;
+	}
+
+	/* Charter panel — the manifesto/principles surface, with corner marks like a
+	   charter document. Also used for Biography's "Outside of Work" card. */
+	.compact-card {
+		position: relative;
+		overflow: hidden;
+		background: linear-gradient(160deg, rgba(249, 115, 22, 0.06) 0%, rgba(15, 18, 24, 0.9) 50%);
+		border: 1px solid rgba(249, 115, 22, 0.12);
+		border-radius: var(--radius-compact);
+	}
+
+	.compact-card::before,
+	.compact-card::after {
+		content: '';
+		position: absolute;
+		width: 40px;
+		height: 40px;
+	}
+
+	.compact-card::before {
+		top: 12px;
+		left: 12px;
+		border-top: 2px solid rgba(249, 115, 22, 0.2);
+		border-left: 2px solid rgba(249, 115, 22, 0.2);
+		border-radius: 4px 0 0 0;
+	}
+
+	.compact-card::after {
+		right: 12px;
+		bottom: 12px;
+		border-right: 2px solid rgba(249, 115, 22, 0.2);
+		border-bottom: 2px solid rgba(249, 115, 22, 0.2);
+		border-radius: 0 0 4px 0;
+	}
+
+	/* Centred label with flanking hairlines, e.g. "— The Practice —". */
+	.compact-label {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		font-family: var(--font-mono);
+		font-size: 0.6rem;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--color-orange-500);
+	}
+
+	.compact-label::before,
+	.compact-label::after {
+		content: '';
+		width: 24px;
+		height: 1px;
+		background: var(--color-orange-600);
+		opacity: 0.4;
+	}
+}
+
+/* ── Focus visibility ──────────────────────────────────────────────────────── */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+	outline: 2px solid var(--color-orange-400);
+	outline-offset: 2px;
+	border-radius: 6px;
+}
+
+/* ── Animations ────────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(24px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes pulseDot {
+	0%,
+	100% {
+		opacity: 0.4;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+.fade-up {
+	animation: fadeUp 0.7s ease both;
+}
+
+/* Everything slow and one-directional — no bounce, no spring. */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	.fade-up {
+		animation: none;
+		opacity: 1;
+		transform: none;
+	}
+}

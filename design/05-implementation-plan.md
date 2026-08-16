@@ -46,7 +46,19 @@ Independent of the redesign and the only item with an active blast radius. Do it
 
 Landing this on `master` triggers a deploy of the *current CRA build* through v4. That's safe: with no manifest on the server yet, the first v4 run uploads and deletes nothing.
 
-Deliverable: `/decktools` can no longer be wiped by a push to this repo.
+Deliverable: `/decktools` can no longer be wiped by a push to this repo. **That part shipped** (PR #44, merged).
+
+### Open blocker: the deploy cannot connect
+
+Shipped, but the deploy has never actually completed. Every run dies at the FTP connect with `AggregateError [ETIMEDOUT]` — `connect ETIMEDOUT 217.64.195.220:21` alongside `connect ENETUNREACH 2001:4b78:1001::201:21`. Auth is never reached, so the credentials are not implicated. What's been ruled out:
+
+- **Not the host, port, or protocol.** Port 21 answers from outside CI; 990 is closed, so explicit FTPS on 21 is right. `217.64.195.220` = `w-02.th.seeweb.it` = what `ftp.lordmzn.it` resolves to, so `FTP_SERVER` is reaching the correct address
+- **Not a network or firewall block.** `LMdecktools` ran its own dry-run against the same host, port, protocol and action version *one minute after* one of these failures, from the same runner pool, and connected fine (85 files listed)
+- **Not Node's Happy Eyeballs**, which was my first theory, from the sub-second failure and the dual-family error. Raising `--network-family-autoselection-attempt-timeout` to 5000ms with `--dns-result-order=ipv4first` moved the failure from 0.6s to 6.3s and it still failed — so the IPv4 connect genuinely doesn't complete, it isn't being cut short. That attempt is on the unmerged branch `ci/ftp-dualstack`; **its commit message states the disproven theory as fact — read this note instead, and drop the branch rather than merging it**
+
+What's left, untested: the three repo secrets are the only remaining repo-specific inputs, and `FTP_SERVER`/`FTP_USERNAME` here date from 2020 while decktools' were all set fresh on 2026-08-16. Since the failure is pre-auth, `FTP_SERVER` is the only one that can matter — most likely a stale value that still resolves but is no longer the endpoint this account should use. decktools' is documented as `ftp.lordmzn.it`. Cheapest next step is to reset this repo's `FTP_SERVER` to match and re-run the dry-run. The alternative hypothesis — that runner egress IPs are blocked intermittently and decktools has simply been lucky — is distinguishable by re-running this repo's dry-run several times and seeing whether it ever succeeds.
+
+None of this blocks Phases 1–5; it blocks Phase 6.
 
 ---
 
