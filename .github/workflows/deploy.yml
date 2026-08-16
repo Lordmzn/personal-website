@@ -1,0 +1,113 @@
+# Deploys build/ to https://www.lordmzn.it/ on Tophost.
+#
+# Replaces the previous workflow, which used SamKirkland/FTP-Deploy-Action@2.0.0
+# with `ARGS: --delete` and no remote directory. Two problems with that:
+#
+#   1. `--delete` told lftp to mirror the local build over the target and remove
+#      anything on the server that was not in it. Since build/ only ever holds
+#      this site's own output, every push deleted every sibling path on the FTP
+#      space — including /decktools, which is deployed from a different repo.
+#   2. No remote directory was set, so uploads landed wherever the FTP login
+#      happened to drop the session rather than at an explicitly chosen path.
+#
+# The replacement fixes both. There is no `--delete` equivalent anywhere below:
+# v4 syncs against a manifest it keeps on the server and only removes files it
+# previously uploaded itself, so it cannot touch anything it did not put there.
+# `dangerous-clean-slate` is the option that would restore the old behaviour and
+# it is never set.
+#
+# Modelled on ../LMdecktools/.github/workflows/deploy.yml, which solved the same
+# problem from the other side. One thing is inverted: decktools deploys into a
+# subfolder and its guard asserts the target is *below* /htdocs. This site IS
+# /htdocs, so the guard here is an exact-match allowlist instead.
+
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Log what would be uploaded, upload nothing'
+        type: boolean
+        default: false
+
+# Two deploys overlapping would interleave uploads into one directory. Queue
+# rather than cancel: a half-finished deploy is worse than a slow one.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+# No `permissions:` block: read-only is correct for a workflow with no token.
+
+env:
+  # The main site's document root. Tophost serves sites out of /htdocs, and the
+  # main website is /htdocs itself — /decktools is a subfolder of it.
+  #
+  # A plain env value rather than a secret or a variable, on purpose: changing
+  # the deploy target should require a reviewable diff, not repo-admin access.
+  #
+  # VERIFY THIS WITH A DRY RUN BEFORE THE FIRST REAL DEPLOY. The value is what
+  # ../LMdecktools/docs/deployment.md documents and what its own working deploy
+  # to /htdocs/decktools/ implies, but the old workflow set no remote directory
+  # at all, so nothing here has ever been confirmed against this account. Run
+  # the workflow manually with dry-run: true, read the upload paths in the log,
+  # and correct this value (and the guard below) if the FTP account turns out to
+  # be chrooted to /htdocs — in which case the right value is `/`.
+  SERVER_DIR: /htdocs/
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Node 12 is long EOL and this pin is not a recommendation — it is a
+      # constraint. react-scripts 3.3.0 is webpack 4, which hashes with MD4;
+      # OpenSSL 3 removed MD4, so the build fails on Node 17+ with
+      # `error:0308010C:digital envelope routines::unsupported`. The bump comes
+      # with the SvelteKit rewrite that removes react-scripts, not before —
+      # see design/05-implementation-plan.md, Phase 1.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '12.x'
+
+      - name: Build
+        run: |
+          yarn install
+          yarn build
+
+      # A typo here would point the sync at the FTP root or at /htdocs/decktools.
+      # Cheap insurance: accept exactly one value.
+      - name: Guard the target directory
+        run: |
+          case "$SERVER_DIR" in
+            /htdocs/) ;;
+            *)
+              echo "::error::SERVER_DIR must be exactly '/htdocs/', got '$SERVER_DIR'"
+              exit 1
+              ;;
+          esac
+          echo "Deploying to $SERVER_DIR"
+
+      - name: Upload to Tophost
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Explicit TLS on port 21. `ftps-legacy` would be implicit TLS on 990.
+          protocol: ftps
+          local-dir: ./build/
+          server-dir: ${{ env.SERVER_DIR }}
+          dry-run: ${{ inputs.dry-run == true }}
+          # Never add `dangerous-clean-slate` here. It is the one option that
+          # reintroduces the deletion behaviour this workflow exists to remove.
+          # Setting this replaces the action's defaults rather than adding to
+          # them, so the three defaults are repeated here alongside .DS_Store.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.DS_Store
