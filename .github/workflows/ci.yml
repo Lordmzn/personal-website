@@ -1,0 +1,33 @@
+# Lint, type-check and unit tests on every push and pull request.
+#
+# The repo had no build or test gate at all before this: the old workflow went
+# straight from `yarn build` to an FTP upload, so a broken build was discovered
+# by the deploy job failing, and a broken *test* was never discovered at all
+# (src/App.test.js had been failing for years).
+#
+# Deliberately a separate workflow from deploy.yml rather than a job it depends
+# on, mirroring LMdecktools. Deploy is push-to-master only and needs FTP
+# secrets; this runs on every branch and PR and needs none.
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run lint
+      - run: pnpm run check
+      - run: pnpm test
+
+      # Prerendering is where a bad link or a missing asset actually surfaces —
+      # adapter-static fails the build on a 404 it can reach from a page.
+      - run: pnpm run build
