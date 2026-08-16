@@ -1,0 +1,33 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"site_name": "Emanuele Mason",
+	"site_description": "Emanuele Mason — systems thinker. Energy platform engineering at Enersem, with a research background in multi-agent AI and water resource management.",
+
+	"nav_portfolio": "Portfolio",
+	"nav_biography": "Biography",
+	"nav_library": "Library",
+
+	"footer_tagline": "道可道 非常道",
+	"footer_github": "GitHub",
+	"footer_linkedin": "LinkedIn",
+	"footer_researchgate": "ResearchGate",
+	"footer_scholar": "Scholar",
+	"footer_spotify": "Spotify",
+	"footer_cv": "CV",
+
+	"hero_eyebrow": "Systems thinker · Researcher · Slow learner",
+	"hero_headline_lead": "Study What",
+	"hero_headline_accent": "Endures",
+	"hero_subhead": "I build software for energy monitoring at Enersem, with a research background in AI and water systems before that. Outside of work I practice Tai Chi and Shaolin, fence with sabers and other swords sometimes, and mostly just try to get a little better at things, slowly.",
+	"hero_cta_work": "See the Work",
+	"hero_cta_cv": "Read the CV",
+
+	"bio_title": "How I Got Here",
+	"library_title": "Published Work",
+	"library_lede": "The three most-cited journal articles from the PhD years, plus the one that won an award. Full list linked below.",
+
+	"error_title": "Off the chart",
+	"error_body": "There is nothing at this address.",
+	"error_home": "Back to the portfolio"
+}
