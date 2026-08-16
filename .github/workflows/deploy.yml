@@ -93,6 +93,27 @@ jobs:
 
       - name: Upload to Tophost
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        # Both flags work around Node's Happy Eyeballs (`autoSelectFamily`,
+        # on by default since Node 20) against this host, which publishes both
+        # an A and an AAAA record while GitHub runners have no IPv6 route.
+        #
+        # Node races the two families and gives each attempt only
+        # `autoSelectFamilyAttemptTimeout` — 250ms by default. The IPv6 attempt
+        # fails instantly with ENETUNREACH, the IPv4 attempt is then *aborted*
+        # at 250ms and reported as ETIMEDOUT, and the whole connect fails in
+        # under a second with an AggregateError naming both families. It reads
+        # like a firewall block; it is a stopwatch. An Azure runner in eastus is
+        # ~100ms from Seeweb's Milan node, so a TCP handshake sits right on that
+        # 250ms edge — which is why this fails intermittently rather than
+        # always, and why the same config in LMdecktools deployed fine earlier
+        # the same day.
+        #
+        # ipv4first puts the reachable family first; the raised timeout gives
+        # the handshake a realistic budget once it gets there.
+        env:
+          NODE_OPTIONS: >-
+            --dns-result-order=ipv4first
+            --network-family-autoselection-attempt-timeout=5000
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
