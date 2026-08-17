@@ -25,6 +25,18 @@ export const SITE_URL = 'https://www.lordmzn.it';
  */
 export const BASE_PATH = '';
 
+/**
+ * Every page the site serves, in sitemap order.
+ *
+ * Lives here rather than in the sitemap endpoint because SvelteKit restricts
+ * what a +server.ts may export, and because seo.test.ts reads it to assert the
+ * list has not gone stale against the routes that actually exist.
+ *
+ * Trailing slashes match what is actually served — +layout.ts sets
+ * trailingSlash = 'always', so a slashless entry would name a URL that 301s.
+ */
+export const ROUTES = ['/', '/biography/', '/library/'] as const;
+
 /** Absolute URL for a site path (locale prefix included, base excluded). */
 export function absoluteUrl(pathname: string): string {
 	return `${SITE_URL}${BASE_PATH}${pathname}`;

@@ -62,7 +62,11 @@ export const principles: Principle[] = [
 	{ numeral: 'IV.', lead: () => m.practice_4_lead(), body: () => m.practice_4_body() }
 ];
 
-/** CV downloads. The Italian file is added in Phase 4; see the plan. */
+/**
+ * CV downloads. Both files are built from the sibling `cv` repo
+ * (europass-eng / europass-ita) and refreshed by hand — see the README.
+ */
 export const cvDownloads = [
-	{ label: () => m.cv_download_en(), href: '/cv/EmanueleMason-CV-EN.pdf' }
+	{ label: () => m.cv_download_en(), href: '/cv/EmanueleMason-CV-EN.pdf' },
+	{ label: () => m.cv_download_it(), href: '/cv/EmanueleMason-CV-IT.pdf' }
 ];

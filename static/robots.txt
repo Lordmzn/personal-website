@@ -1,0 +1,18 @@
+# Crawlers read /robots.txt at the domain root only, so this one file governs
+# the whole of lordmzn.it — including /decktools/, which is deployed from the
+# LMdecktools repo into a subfolder of this site's document root.
+#
+# That repo ships its own static/robots.txt, but it lands at
+# /decktools/robots.txt where nothing will ever fetch it; its header says as
+# much and asks for these two lines to be merged here. They never were, so the
+# Disallow and Sitemap below are that merge. Keep them when editing this file.
+
+User-agent: *
+Allow: /
+
+# Build assets are content-hashed noise in an index.
+Disallow: /_app/
+Disallow: /decktools/_app/
+
+Sitemap: https://www.lordmzn.it/sitemap.xml
+Sitemap: https://www.lordmzn.it/decktools/sitemap.xml

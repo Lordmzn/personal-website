@@ -30,6 +30,19 @@ function markup(source: string): string {
 	return source.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<!--[\s\S]*?-->/g, '');
 }
 
+/**
+ * Strip every comment form, for checks that must look at the whole file rather
+ * than just its markup. Prose about a URL is not a URL — the http:// check
+ * below first failed on a comment explaining why `http://sveltekit-prerender`
+ * must not leak into the output, which is the opposite of a defect.
+ */
+function stripComments(source: string): string {
+	return source
+		.replace(/<!--[\s\S]*?-->/g, '')
+		.replace(/\/\*[\s\S]*?\*\//g, '')
+		.replace(/(^|[^:])\/\/.*$/gm, '$1');
+}
+
 describe('outbound links', () => {
 	it('finds components to check', () => {
 		expect(files.length).toBeGreaterThan(0);
@@ -73,7 +86,7 @@ describe('no plain-http URLs', () => {
 	// which browsers block outright. Nothing should reintroduce that.
 	for (const file of files) {
 		it(`${file.split('/src/')[1]}`, () => {
-			const source = readFileSync(file, 'utf8');
+			const source = stripComments(readFileSync(file, 'utf8'));
 			expect(source, `insecure http:// URL in ${file}`).not.toMatch(/http:\/\/(?!localhost)/);
 		});
 	}

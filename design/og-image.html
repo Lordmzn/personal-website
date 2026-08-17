@@ -1,0 +1,83 @@
+<!doctype html>
+<!--
+  Source for static/og-image.jpg (1200x630). Rendered with headless Chrome and
+  converted to JPEG — see the README for the exact command.
+
+  Fonts and the background photo are referenced relatively; the render script
+  copies them next to a temporary copy of this file so file:// loading works.
+  JPEG rather than PNG: the photo makes a PNG several hundred KB for no gain.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face {
+    font-family: 'Outfit';
+    src: url('outfit.woff2') format('woff2');
+    font-weight: 100 900;
+  }
+  @font-face {
+    font-family: 'Space Mono';
+    src: url('space-mono.woff2') format('woff2');
+    font-weight: 700;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #0a0c10;
+    font-family: 'Outfit', -apple-system, sans-serif;
+    color: #b0b4c0;
+  }
+  .frame {
+    position: relative; width: 100%; height: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 88px;
+    background-image:
+      linear-gradient(105deg, rgba(10,12,16,0.96) 0%, rgba(10,12,16,0.86) 45%, rgba(10,12,16,0.55) 100%),
+      url('hero-bg.jpg');
+    background-size: cover;
+    background-position: center 35%;
+  }
+  .eyebrow {
+    font-family: 'Space Mono', monospace; font-weight: 700;
+    font-size: 17px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #fdba74;
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 30px;
+  }
+  .eyebrow .dot { width: 9px; height: 9px; border-radius: 50%; background: #f97316; }
+  h1 {
+    font-size: 92px; font-weight: 900; line-height: 1.0;
+    letter-spacing: -0.035em; color: #fff;
+  }
+  h1 .accent {
+    background: linear-gradient(135deg, #fb923c 0%, #ea580c 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  p {
+    margin-top: 26px; font-size: 27px; line-height: 1.5;
+    color: #b0b4c0; max-width: 720px;
+  }
+  .rule {
+    margin-top: 40px; width: 260px; height: 3px; opacity: 0.55;
+    background: repeating-linear-gradient(90deg,
+      #ea580c 0px, #ea580c 10px, transparent 10px, transparent 15px,
+      #c2410c 15px, #c2410c 25px, transparent 25px, transparent 30px);
+  }
+  .domain {
+    position: absolute; right: 88px; bottom: 54px;
+    font-family: 'Space Mono', monospace; font-weight: 700;
+    font-size: 19px; letter-spacing: 0.14em; color: #636878;
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="eyebrow"><span class="dot"></span> Systems thinker · Researcher</div>
+    <h1>Emanuele<br /><span class="accent">Mason</span></h1>
+    <p>Energy platform engineering at Enersem, after a PhD in multi-agent AI and water systems.</p>
+    <div class="rule"></div>
+    <div class="domain">LORDMZN.IT</div>
+  </div>
+</body>
+</html>

@@ -4,6 +4,10 @@
 	"site_name": "Emanuele Mason",
 	"site_description": "Emanuele Mason — systems thinker. Energy platform engineering at Enersem, with a research background in multi-agent AI and water resource management.",
 
+	"meta_portfolio_description": "Projects by Emanuele Mason: the Enersem EMS platform and LM Deck Tools, plus research on multi-agent negotiation, water systems and river erosion.",
+	"meta_biography_description": "How Emanuele Mason got here: environmental engineering, water resource management, a PhD in multi-agent reinforcement learning, and building an energy platform at Enersem.",
+	"meta_library_description": "Selected publications by Emanuele Mason in Water Resources Research and JWRPM, plus the AAMAS 2016 best paper award.",
+
 	"nav_portfolio": "Portfolio",
 	"nav_biography": "Biography",
 	"nav_library": "Library",
@@ -78,6 +82,7 @@
 
 	"cv_heading": "Want the formal version?",
 	"cv_download_en": "Download CV (EN)",
+	"cv_download_it": "Download CV (IT)",
 
 	"library_title": "Published Work",
 	"library_lede": "The three most-cited journal articles from the PhD years, plus the one that won an award. Full list linked below.",
