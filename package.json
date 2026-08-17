@@ -16,12 +16,14 @@
 		"lint": "prettier --check . && eslint .",
 		"test": "vitest run",
 		"test:watch": "vitest",
-		"paraglide": "paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide"
+		"paraglide": "paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide",
+		"test:e2e": "playwright test"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
 		"@inlang/paraglide-js": "~1.11.8",
+		"@playwright/test": "^1.58.2",
 		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
