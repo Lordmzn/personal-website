@@ -142,7 +142,7 @@ Components in `src/lib/components/`: `Nav`, `Footer`, `RopeDivider`, `FeatureCar
 
 ---
 
-## Phase 5 — quality gates — *partly done: `ci.yml` landed in Phase 1; Playwright e2e still outstanding*
+## Phase 5 — quality gates ✅ done
 
 The current repo has **no build or test gate at all** — a broken build just fails the deploy job after the fact. Add `.github/workflows/ci.yml` copying decktools': `pnpm lint`, `pnpm check`, `pnpm test` on every push and PR, plus a Playwright job.
 
