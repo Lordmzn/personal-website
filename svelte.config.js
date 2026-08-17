@@ -36,7 +36,20 @@ const config = {
 			// would otherwise be the placeholder `http://sveltekit-prerender`
 			// and get baked into canonical/alternate links. Keep in sync with
 			// SITE_URL in src/lib/site.ts — site.test.ts fails if they drift.
-			origin: 'https://www.lordmzn.it'
+			origin: 'https://www.lordmzn.it',
+
+			// /decktools/ is a real URL on this domain but it is not part of this
+			// app: LMdecktools deploys its own build into that subfolder. Because
+			// `origin` above makes it same-origin, the crawler treats the
+			// portfolio's link to it as internal and fails the build on the 404.
+			//
+			// Scoped deliberately to that one prefix and rethrowing everything
+			// else, so the build keeps working as a link checker for our own
+			// routes — which is the reason `pnpm run build` is a CI step.
+			handleHttpError: ({ path, referrer, message }) => {
+				if (path === '/decktools' || path.startsWith('/decktools/')) return;
+				throw new Error(`${message} (linked from ${referrer})`);
+			}
 		}
 	}
 };

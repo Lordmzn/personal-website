@@ -2,9 +2,8 @@
 	import { base } from '$app/paths';
 	import * as m from '$lib/paraglide/messages';
 	import RopeDivider from '$lib/components/RopeDivider.svelte';
-
-	// Phase 1 ships the hero only. The Current/Research project grid lands in
-	// Phase 3 from design/03-content-draft.md — see design/05-implementation-plan.md.
+	import FeatureCard from '$lib/components/FeatureCard.svelte';
+	import { currentProjects, researchProjects } from '$lib/content/projects';
 </script>
 
 <svelte:head>
@@ -43,4 +42,25 @@
 
 <RopeDivider />
 
-<section id="work" class="mx-auto max-w-[1100px] px-8 pt-16 pb-20"></section>
+<!-- Current before Research: the original review's sharpest finding was that
+     every card on the old site was pre-2019 academic work, with nothing
+     representing Enersem or decktools. See design/01-review.md §5. -->
+<section id="work" class="mx-auto max-w-[1100px] px-8 pt-16 pb-20">
+	<h2 class="on-photo-label mb-5 text-center font-mono text-[0.68rem] tracking-[0.15em] uppercase">
+		{m.portfolio_group_current()}
+	</h2>
+	<div class="mb-14 grid gap-6 sm:grid-cols-2">
+		{#each currentProjects as project (project.id)}
+			<FeatureCard {project} />
+		{/each}
+	</div>
+
+	<h2 class="on-photo-label mb-5 text-center font-mono text-[0.68rem] tracking-[0.15em] uppercase">
+		{m.portfolio_group_research()}
+	</h2>
+	<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+		{#each researchProjects as project (project.id)}
+			<FeatureCard {project} />
+		{/each}
+	</div>
+</section>
