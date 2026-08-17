@@ -4,11 +4,10 @@
 	import PubCard from '$lib/components/PubCard.svelte';
 	import * as m from '$lib/paraglide/messages';
 	import { publications, award, scholarProfile } from '$lib/content/publications';
+	import PageMeta from '$lib/components/PageMeta.svelte';
 </script>
 
-<svelte:head>
-	<title>{m.site_name()} — {m.nav_library()}</title>
-</svelte:head>
+<PageMeta title={m.nav_library()} description={m.meta_library_description()} />
 
 <PageHeader eyebrow={m.nav_library()} title={m.library_title()} lede={m.library_lede()} />
 

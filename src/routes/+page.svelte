@@ -4,11 +4,10 @@
 	import RopeDivider from '$lib/components/RopeDivider.svelte';
 	import FeatureCard from '$lib/components/FeatureCard.svelte';
 	import { currentProjects, researchProjects } from '$lib/content/projects';
+	import PageMeta from '$lib/components/PageMeta.svelte';
 </script>
 
-<svelte:head>
-	<title>{m.site_name()} — {m.nav_portfolio()}</title>
-</svelte:head>
+<PageMeta title={m.nav_portfolio()} description={m.meta_portfolio_description()} />
 
 <section
 	class="flex min-h-[70vh] flex-col items-center justify-center px-8 pt-20 pb-16 text-center"

@@ -6,11 +6,10 @@
 	import CharterPanel from '$lib/components/CharterPanel.svelte';
 	import * as m from '$lib/paraglide/messages';
 	import { timeline, principles, cvDownloads } from '$lib/content/biography';
+	import PageMeta from '$lib/components/PageMeta.svelte';
 </script>
 
-<svelte:head>
-	<title>{m.site_name()} — {m.nav_biography()}</title>
-</svelte:head>
+<PageMeta title={m.nav_biography()} description={m.meta_biography_description()} />
 
 <PageHeader eyebrow={m.nav_biography()} title={m.bio_title()} />
 
@@ -62,8 +61,10 @@
 <section class="mx-auto max-w-[700px] px-8 pb-24 text-center">
 	<h2 class="mb-6 text-[1.4rem] font-bold text-white">{m.cv_heading()}</h2>
 	<div class="flex flex-wrap justify-center gap-3">
-		{#each cvDownloads as cv (cv.href)}
-			<a href={`${base}${cv.href}`} class="btn btn-lg btn-primary">{cv.label()}</a>
+		{#each cvDownloads as cv, i (cv.href)}
+			<a href={`${base}${cv.href}`} class="btn btn-lg {i === 0 ? 'btn-primary' : 'btn-ghost'}">
+				{cv.label()}
+			</a>
 		{/each}
 	</div>
 </section>

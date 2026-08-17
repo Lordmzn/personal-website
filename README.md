@@ -1,44 +1,120 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# lordmzn.it
 
-## Available Scripts
+Personal site of Emanuele Mason — portfolio, biography, publications. Live at
+**https://www.lordmzn.it**.
 
-In the project directory, you can run:
+SvelteKit 2 + Svelte 5, Tailwind v4, prerendered to static HTML with
+`adapter-static`. It shares its design system and build shape with
+[LMdecktools](https://github.com/Lordmzn/LMdecktools), which is deployed into
+`/decktools/` on the same domain.
 
-### `yarn start`
+## Commands
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Requires Node 22 (`.nvmrc`) and pnpm 11 (`packageManager`). `node_modules/` is
+not checked in.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```bash
+pnpm install         # also compiles Paraglide messages, via `prepare`
+pnpm dev             # dev server on http://localhost:5173
+pnpm build           # static build into build/
+pnpm preview         # serve the production build
 
-### `yarn test`
+pnpm lint            # prettier --check && eslint
+pnpm check           # svelte-check
+pnpm test            # vitest
+pnpm paraglide       # recompile messages only
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+CI runs `lint`, `check`, `test` and `build` on every push and PR.
 
-### `yarn build`
+## Where things live
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+|                    |                                                                                    |
+| ------------------ | ---------------------------------------------------------------------------------- |
+| `src/routes/`      | Three prerendered pages plus `sitemap.xml` and the 404 shell                       |
+| `src/lib/content/` | **All page content**, as typed data — edit here, not in markup                     |
+| `messages/en.json` | Every display string. Compiled to `src/lib/paraglide/` (generated, gitignored)     |
+| `src/app.css`      | Design tokens and component classes, shared with decktools                         |
+| `static/`          | Photo, favicons, OG image, CVs, `robots.txt`                                       |
+| `design/`          | Handoff package: audit, design system, approved copy, mockups, implementation plan |
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Start with `design/00-README.md`, then `design/05-implementation-plan.md` for
+what is done and what is left.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Editing content
 
-### `yarn eject`
+Project cards, timeline steps, publications and principles are arrays in
+`src/lib/content/`. URLs and glyphs live in those files; the prose lives in
+`messages/en.json` and is referenced by message function. Tests in
+`src/lib/__tests__/` assert that outbound links are real absolute https URLs,
+that a couple of settled decisions stay settled (the award's citation, [A1]
+having no DOI), and that the sitemap matches the routes that exist.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Adding Italian
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Paraglide is wired up but only `en` is registered. To add Italian: add
+`"it-it"` to `languageTags` in `project.inlang/settings.json`, create
+`messages/it-it.json`, and add the language switcher back to `Nav.svelte`.
+No route changes are needed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Regenerating static assets
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`static/og-image.jpg` is rendered from `design/og-image.html`. That file
+references the fonts and background photo relatively, so copy them alongside it
+first:
 
-## Learn More
+```bash
+work=$(mktemp -d)
+cp design/og-image.html "$work/index.html"
+cp static/hero-bg.jpg "$work/hero-bg.jpg"
+cp node_modules/.pnpm/@fontsource-variable+outfit@*/node_modules/@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2 "$work/outfit.woff2"
+cp node_modules/.pnpm/@fontsource+space-mono@*/node_modules/@fontsource/space-mono/files/space-mono-latin-700-normal.woff2 "$work/space-mono.woff2"
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless --disable-gpu --hide-scrollbars --allow-file-access-from-files \
+  --force-device-scale-factor=1 --window-size=1200,630 \
+  --screenshot="$work/og.png" "file://$work/index.html"
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+sips -s format jpeg -s formatOptions 82 "$work/og.png" --out static/og-image.jpg
+```
+
+JPEG rather than PNG: the photo makes a PNG roughly five times larger for no
+visible gain.
+
+`static/hero-bg.jpg` is a downscaled, heavily-compressed crop of the original
+camera export (kept in `design/assets/`). It sits under a dark gradient, so it
+does not need to be pristine — but it is the heaviest asset on every page, and a
+test caps it at 500 KB:
+
+```bash
+sips -Z 1920 -s format jpeg -s formatOptions 40 <original>.jpg --out static/hero-bg.jpg
+```
+
+### CVs
+
+`static/cv/EmanueleMason-CV-{EN,IT}.pdf` are built from the sibling `cv` repo
+(`europass-eng/main.pdf` and `europass-ita/main.pdf`) and copied over by hand.
+Refresh them whenever that repo is rebuilt.
+
+## Deployment
+
+Pushing to `master` builds and uploads `build/` to Tophost over FTPS
+(`.github/workflows/deploy.yml`). The workflow can also be run manually with
+`dry-run: true` to see what it would upload without uploading anything.
+
+Two things about that deploy are load-bearing and easy to undo by accident:
+
+- **`SERVER_DIR` is `/htdocs/`, the main site's document root**, and a guard
+  step fails the job unless it is exactly that. `/htdocs/decktools/` is a
+  sibling deployed from another repo.
+- **`dangerous-clean-slate` is never set.** The action syncs against a manifest
+  it keeps on the server and only deletes files it uploaded itself. An earlier
+  version of this workflow used `--delete`, which wiped `/decktools` on every
+  push.
+
+This repo deliberately ships **no `.htaccess`**. `/htdocs/.htaccess` is
+hand-managed on the server and carries the HTTPS redirect that `/decktools`
+depends on; a file here would overwrite it on every deploy.
+
+`static/robots.txt` governs the whole domain, decktools included — crawlers only
+read `/robots.txt` at the root. Keep the `/decktools/` lines in it.

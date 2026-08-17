@@ -48,7 +48,12 @@ Landing this on `master` triggers a deploy of the *current CRA build* through v4
 
 Deliverable: `/decktools` can no longer be wiped by a push to this repo. **That part shipped** (PR #44, merged).
 
-### Open blocker: the deploy cannot connect
+### ~~Open blocker: the deploy cannot connect~~ — resolved
+
+**The deploy pipeline now works** (confirmed 2026-08-16, after PR #45 merged). The write-up below is kept as the record of what was ruled out, since the same symptom could recur.
+
+<details>
+<summary>Original investigation</summary>
 
 Shipped, but the deploy has never actually completed. Every run dies at the FTP connect with `AggregateError [ETIMEDOUT]` — `connect ETIMEDOUT 217.64.195.220:21` alongside `connect ENETUNREACH 2001:4b78:1001::201:21`. Auth is never reached, so the credentials are not implicated. What's been ruled out:
 
@@ -60,9 +65,11 @@ What's left, untested: the three repo secrets are the only remaining repo-specif
 
 None of this blocks Phases 1–5; it blocks Phase 6.
 
+</details>
+
 ---
 
-## Phase 1 — project skeleton
+## Phase 1 — project skeleton ✅ done
 
 Branch `rewrite/sveltekit`. Scaffold to match decktools rather than running `sv create` and reconciling afterward.
 
@@ -80,7 +87,7 @@ Branch `rewrite/sveltekit`. Scaffold to match decktools rather than running `sv 
 
 ---
 
-## Phase 2 — delete the old app
+## Phase 2 — delete the old app ✅ done
 
 One commit, after Phase 1 builds. Nothing here is ported.
 
@@ -92,7 +99,7 @@ One commit, after Phase 1 builds. Nothing here is ported.
 
 ---
 
-## Phase 3 — routes and content
+## Phase 3 — routes and content ✅ done
 
 Three prerendered routes, `trailingSlash = 'always'` in `src/routes/+layout.ts` (decktools' `deployment.md` is explicit that this is what makes Apache's DirectoryIndex resolve `/biography/` with no rewrite rules — without it every URL except `/` 404s).
 
@@ -117,7 +124,7 @@ Components in `src/lib/components/`: `Nav`, `Footer`, `RopeDivider`, `FeatureCar
 
 ---
 
-## Phase 4 — static assets, SEO, and the `.htaccess` handover
+## Phase 4 — static assets, SEO, and the `.htaccess` handover ✅ done
 
 `static/` contents:
 
@@ -135,7 +142,7 @@ Components in `src/lib/components/`: `Nav`, `Footer`, `RopeDivider`, `FeatureCar
 
 ---
 
-## Phase 5 — quality gates
+## Phase 5 — quality gates — *partly done: `ci.yml` landed in Phase 1; Playwright e2e still outstanding*
 
 The current repo has **no build or test gate at all** — a broken build just fails the deploy job after the fact. Add `.github/workflows/ci.yml` copying decktools': `pnpm lint`, `pnpm check`, `pnpm test` on every push and PR, plus a Playwright job.
 
