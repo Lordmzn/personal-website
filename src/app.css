@@ -337,6 +337,22 @@ body::after {
 		border-radius: 0 0 4px 0;
 	}
 
+	/* Inline anchors inside rich-text copy. Two message strings carry links
+	   (the EI@DEIB alumni page in the timeline, FESK and Spotify in "Outside of
+	   Work"), so they render through {@html} and cannot take utility classes on
+	   the anchor itself — the style has to come from the container. Message
+	   strings are authored in messages/*.json in this repo, never user input,
+	   and content.test.ts asserts they contain no <script>. */
+	.prose-links a {
+		color: var(--color-orange-300);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.prose-links a:hover {
+		color: var(--color-orange-200);
+	}
+
 	/* Centred label with flanking hairlines, e.g. "— The Practice —". */
 	.compact-label {
 		display: flex;
